@@ -70,7 +70,6 @@ If drift begins near 9 000–10 000 characters, the audit should detect and flag
 
 ## 🧩 Example: Boundary Test Pattern
 
-```text
 Test Name: ANCHOR_STABILITY_NEAR_LIMIT
 Goal: Verify that semantic anchors remain stable near 9 500–10 000 characters.
 
