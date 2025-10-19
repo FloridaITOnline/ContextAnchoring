@@ -1,6 +1,6 @@
 ♟️ Chess Analysis Bot — Context Anchoring in Action
 
-[![License: Public Domain](https://img.shields.io/badge/license-Public%20Domain-brightgreen.svg)](./LICENSE)
+[![License: GPL v3](https://img.shields.io/badge/license-GPLv3-blue.svg)](./LICENSE)
 
 
 “This project demonstrates Context Anchoring as a working computing model — transforming a single prompt into a fully deterministic, stateful, and auditable chess analysis system without code, APIs, or external memory.”
