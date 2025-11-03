@@ -28,6 +28,8 @@ Each Gate acts as a callable “function” that executes logic via language str
 
 ⚙️ Architecture
 🧱 Gate Stack
+
+```
 Gate	Function	Equivalent Component
 PGN Intake Gate	Parses input PGN and validates format	Input Parser
 Step-1 JSON Gate	Canonicalizes game data into structured JSON	Data Model
@@ -36,6 +38,7 @@ Commentary Gate (v1.3)	Generates multi-paragraph natural analysis	Analysis Engin
 UX Gate (v1.2)	Presents persistent interaction interface	User Interface Layer
 Post-PGN Cue	Signals state readiness	Runtime Logger
 🔄 Execution Flow
+```
 ```
 PGN → JSON → CSV → Commentary → UX → User Query → UX (loop)
 ```
