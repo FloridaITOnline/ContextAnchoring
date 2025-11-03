@@ -17,19 +17,17 @@ Unlike traditional bots or API-based engines, this system performs all computati
 
 Context Anchoring treats prompts as computation layers:
 
-Layer	Software Equivalent	Anchoring Equivalent
-Code	Functions / APIs	Gates — logical reasoning units (Chess Analysis Gate, Commentary Gate, UX Gate)
-State	Variables	Anchors — validated text states persisting across turns
-Runtime	CPU / Memory	Model Attention Window
-Compiler	Syntax Parser	Prompt Parser
-QA / Testing	Unit Tests	Gate Validation & Self-Audit
+- Layer	Software Equivalent	Anchoring Equivalent
+- Code	Functions / APIs	Gates — logical reasoning units (Chess Analysis Gate, Commentary Gate, UX Gate)
+- State	Variables	Anchors — validated text states persisting across turns
+- Runtime	CPU / Memory	Model Attention Window
+- Compiler	Syntax Parser	Prompt Parser
+- QA / Testing	Unit Tests	Gate Validation & Self-Audit
 
 Each Gate acts as a callable “function” that executes logic via language structure and schema enforcement, not executable code.
-
+```
 ⚙️ Architecture
 🧱 Gate Stack
-
-```
 Gate	Function	Equivalent Component
 PGN Intake Gate	Parses input PGN and validates format	Input Parser
 Step-1 JSON Gate	Canonicalizes game data into structured JSON	Data Model
@@ -42,7 +40,7 @@ Post-PGN Cue	Signals state readiness	Runtime Logger
 ```
 PGN → JSON → CSV → Commentary → UX → User Query → UX (loop)
 ```
-
+```
 PGN Intake — Structured input via fenced tags (===PGN-START=== ... ===PGN-END===).
 
 Step-1 JSON — Game reconstructed as canonical JSON with validation (FEN replay, tag audit).
@@ -61,7 +59,7 @@ State persistence is achieved through anchored context, not memory.
 
 Each fenced section (JSON, CSV, Commentary, UX) acts as a semantic checkpoint.
 Validated outputs become anchors, allowing subsequent reasoning to reference prior results deterministically.
-
+```
 Example:
 ```
 ===STEP1-JSON-START===
