@@ -1,6 +1,6 @@
 # Prompt-to-CA-Prompt Orchestrator — Conceptual Design
 
-*Version 1.1 — GPL v3 Open Framework*  
+*Version 1.0 — GPL v3 Open Framework*  
 [![License: GPL v3](https://img.shields.io/badge/license-GPLv3-blue.svg)](./LICENSE)
 
 **Purpose:** To conceptually design a Context Anchoring (CA) orchestrator that transforms an unstructured prompt into a structured, Context Anchor Approved Prompt, while explicitly modeling uncertainty, confidence, ambiguity, and partial success.
@@ -11,7 +11,7 @@
 - Allow partial convergence, not only binary success
 - Preserve human-in-the-loop control without collapsing the system
 
-**Disclaimer:** This document outlines the *design* of such an orchestrator using the Context Anchoring framework. Implementing a fully functional version would require significant iterative development, testing, and refinement within an LLM environAment, likely involving multiple turns and human oversight due to the inherent complexity of inferring intent from unstructured input.
+**Disclaimer:** This document outlines the *design* of such an orchestrator using the Context Anchoring framework. Implementing a fully functional version would require significant iterative development, testing, and refinement within an LLM environment, likely involving multiple turns and human oversight due to the inherent complexity of inferring intent from unstructured input.
 
 ---
 
@@ -123,18 +123,6 @@
 - **Operation:**
     1.  Promote candidates above confidence threshold
     2.  Flag low-confidence anchors as ambiguous
-
-### GATE: G3_Infer_Anchors
-- **Purpose:** Extracts and formalizes potential Anchors (state, constraints, objectives) from the input prompt.
-- **Inputs:** `A1_Input_Prompt`, `A2_CA_Framework_Definition`.
-- **Outputs:** Updates `A3_Anchor_Candidates`, `A11_Conversion_Issues`.
-- **Operation:**
-    1.  Analyze `A1_Input_Prompt` for nouns, key phrases, and explicit constraints that represent persistent state or configuration.
-    2.  Propose names, purposes, types (Static/Dynamic), and initial values/schemas for each potential Anchor.
-    3.  If ambiguity, add a note to `A11_Conversion_Issues`.
-- **Verification (Audit):**
-    - Ensure all identified Anchors have a proposed name and purpose.
-    - Check for potential duplicate Anchors.
 
 ### GATE: G3_Evaluate_Gate_Candidates
 - **Purpose:** Promote or discard gate candidates.
