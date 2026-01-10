@@ -1,5 +1,7 @@
 # 🧩 Boundary Theory in Context Anchoring
-*Version 1.0 — GPL v3 Open Framework*  
+2026 Justin Rodriguez
+Licensed under GPL v3
+*Version 2.0 — GPL v3 Open Framework*  
 [![License: GPL v3](https://img.shields.io/badge/license-GPLv3-blue.svg)](./LICENSE)
 
 > “A system’s reliability is defined not by how it performs under ideal conditions, but by how it behaves at the edge of its boundaries.”  
@@ -22,7 +24,7 @@ Understanding and respecting these boundaries is essential to writing stable, re
 
 | **Boundary Type** | **Definition** | **Testing Goal** | **Failure Mode** |
 |--------------------|----------------|------------------|------------------|
-| **Contextual Boundary** | The maximum stable token or character limit (≈ 10 KB / 3 500 tokens). | Verify reasoning remains consistent up to the context limit. | Loss of state, hallucination, or anchor drift. |
+| **Contextual Boundary** | The maximum stable token or character limit (≈ 10 KB / 3,500-4,000 tokens). | Verify reasoning remains consistent up to the context limit. | Loss of state, hallucination, or anchor drift. |
 | **Semantic Boundary** | The edge between valid and invalid conceptual domains. | Test for reasoning integrity under ambiguous or contradictory input. | Confabulation or false generalization. |
 | **Instructional Boundary** | The limit of interpretability in the Intent/Constraint pair. | Ensure the model correctly distinguishes primary vs. secondary intent. | Over-generalization or instruction bleed. |
 | **Validation Boundary** | The threshold where self-audits fail to detect inconsistencies. | Confirm audit prompts catch drift and malformed outputs. | Silent logical failure or schema corruption. |
@@ -55,16 +57,16 @@ This structure mirrors equivalence class testing in traditional QA — but appli
 
 ## 🧠 The 10 KB Stability Boundary
 
-Context Anchoring uses a **bounded runtime** of approximately 10 240 characters (≈ 3 500 tokens).  
-This isn’t arbitrary — it’s a **stability envelope**, ensuring that all atoms (Intent, Constraint, Gate, Audit, Anchor, Loop, State) coexist inside one reasoning window.
-
+Context Anchoring uses a **bounded runtime** of approximatation of 10,240 characters (≈ 3,500-4,000 tokens).  
+This isn’t arbitrary — it’s a **stability envelope**, ensuring that the prompt has reliablility between model token availability variations. 
 Beyond this limit:
-- Anchors degrade (loss of context references)
-- Audits lose fidelity
+- Anchors may degrade (loss of context references)
+- Audits may lose fidelity
 - Reinforcement Loops may oscillate or diverge
+- It is important to understand your intended Model's Token Availability. Test and if Drift occurs, one thing you can try is to reduce the Bounded Runtime.
 
 **Boundary Testing** ensures that every orchestration respects this runtime constraint.  
-If drift begins near 9 000–10 000 characters, the audit should detect and flag the instability — this is *expected behavior*, not failure.
+If drift begins near 9,000–10,000 characters, the audit should detect and flag the instability — this is *expected behavior*, not failure.
 
 ---
 
@@ -74,7 +76,7 @@ Test Name: ANCHOR_STABILITY_NEAR_LIMIT
 Goal: Verify that semantic anchors remain stable near 9 500–10 000 characters.
 
 Steps:
-1. Run multi-gate orchestration with cumulative context size of 9 800–10 000 chars.
+1. Run multi-gate orchestration with cumulative context size of 9,800–10,000 chars.
 2. Observe whether audit confirms state retention across last two gates.
 3. If audit drift occurs, confirm Recovery Loop reanchors correctly.
 
@@ -146,5 +148,5 @@ Modern transformer research (7–10) empirically validates context drift phenome
 Anchoring papers (11–12) establish the applied framework integrating all three domains.
 
 ---
-
+**Written by:** Justin Rodriguez
 
