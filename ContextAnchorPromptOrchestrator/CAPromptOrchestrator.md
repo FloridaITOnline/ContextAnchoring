@@ -11,7 +11,7 @@
 - Allow partial convergence, not only binary success
 - Preserve human-in-the-loop control without collapsing the system
 
-- **Disclaimer:** : This document outlines the design of a Context Anchoring (CA) orchestrator and can be used as a prompt editor or design guide. It assumes you start with a working prompt. Finalizing a production‑ready version of your prompt still requires thorough testing, iterative refinement in an LLM environment, and likely multiple passes with human oversight due to the complexity of inferring intent from unstructured input.
+- **Disclaimer:** This document outlines the design of a Context Anchoring (CA) orchestrator and can be used as a prompt editor or design guide. It assumes you start with a working prompt. Finalizing a production‑ready version of your prompt still requires thorough testing, iterative refinement in an LLM environment, and likely multiple passes with human oversight due to the complexity of inferring intent from unstructured input.
 ---
 
 ### ANCHOR: A0_Objective
