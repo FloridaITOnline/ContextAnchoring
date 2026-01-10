@@ -1,6 +1,6 @@
-# Prompt-to-CA-Prompt Orchestrator — Conceptual Design
+# Prompt-to-CA-Prompt Orchestrator - Conceptual Design
 
-*Version 1.0 — GPL v3 Open Framework*  
+*Version 1.2 - GPL v3 Open Framework*  
 [![License: GPL v3](https://img.shields.io/badge/license-GPLv3-blue.svg)](./LICENSE)
 
 **Purpose:** To conceptually design a Context Anchoring (CA) orchestrator that transforms an unstructured prompt into a structured, Context Anchor Approved Prompt, while explicitly modeling uncertainty, confidence, ambiguity, and partial success.
@@ -15,7 +15,7 @@
 
 ---
 
-## ⚙️ Global Anchors (Persistent State & Configuration for the Conversion Process)
+## ?? Global Anchors (Persistent State & Configuration for the Conversion Process)
 
 ### ANCHOR: A0_Objective
 - **Purpose:** Core objective of the orchestrator.
@@ -35,7 +35,7 @@
     - ContextAnchoring.md
     - Anchor_Definition.md
     - Gate_Definition.md
-    - Core_Primitives_of_Context_Anchoring.md
+    - Core Primitives of Context Anchoring.md
 
 ### ANCHOR: A3_Anchor_Candidates
 - **Purpose:** Stores tentative Anchors inferred from the input prompt.
@@ -45,7 +45,7 @@
     - Name
     - Proposed Purpose
     - Proposed Type (Static/Dynamic)
-    - Confidence Score (0–1)
+    - Confidence Score (0-1)
     - Provenance (text fragment or rationale)
 
 ### ANCHOR: A4_Identified_Anchors
@@ -63,6 +63,8 @@
 ### ANCHOR: A6_Identified_Gates
 - **Purpose:** Stores confirmed Gates.
 - **Type:** Dynamic
+- **Schema:**
+    Gate definition + inputs + outputs + confidence + provenance
 
 ### ANCHOR: A7_Identified_Loops
 - **Purpose:** Stores inferred Loops.
@@ -77,7 +79,7 @@
     - Anchor confidence summary
     - Gate confidence summary
     - Loop confidence summary
-    - Overall conversion confidence (0–1)
+    - Overall conversion confidence (0-1)
 
 ### ANCHOR: A9_Inferred_Orchestration_Flow
 - **Purpose:** Stores inferred execution flow.
@@ -106,7 +108,7 @@
 
 ---
 
-## 🧩 Gates (Conversion Logic)
+## ?? Gates (Conversion Logic)
 
 ### GATE: G1_Parse_Input_Prompt
 - **Purpose:** Initial semantic analysis.
@@ -128,6 +130,13 @@
 - **Purpose:** Promote or discard gate candidates.
 - **Inputs:** A5_Gate_Candidates, A4_Identified_Anchors
 - **Outputs:** A6_Identified_Gates, A11_Conversion_Issues
+- **Operation:**
+    1.  Promote candidates above confidence threshold.
+    2.  Validate that each Gate has a purpose and references known Anchors for inputs/outputs.
+    3.  Flag low-confidence or orphaned Gates as ambiguous in `A11_Conversion_Issues`.
+- **Verification (Audit):**
+    - Ensure promoted Gates include name, purpose, inputs, and outputs.
+    - Check for Gates that reference Anchors not present in `A4_Identified_Anchors`.
 
 ### GATE: G4_Infer_Gates
 - **Purpose:** Extracts and formalizes potential Gates (operations, transformations, reasoning steps) from the input prompt.
@@ -151,7 +160,7 @@
     1.  Analyze `A1_Input_Prompt` for phrases indicating repetition, refinement, or conditional execution until a goal is met.
     2.  Propose names, purposes, Gates involved, and termination conditions for each potential Loop.
     3.  If ambiguity, add a note to `A11_Conversion_Issues`.
-- **Verification (Audit):
+- **Verification (Audit):**
     - Ensure all identified Loops have a proposed name and purpose.
     - Check for Loops with no apparent termination condition.
 
@@ -187,11 +196,12 @@
     - Ensure output is valid Markdown.
     - Check for correct primitive syntax.
 
-### GATE: G7_Assess_Conversion_Confidence
+### GATE: G8_Assess_Conversion_Confidence
 - **Purpose:** Produce overall confidence report.
+- **Inputs:** A3_Anchor_Candidates, A4_Identified_Anchors, A5_Gate_Candidates, A6_Identified_Gates, A7_Identified_Loops, A11_Conversion_Issues
 - **Outputs:** A8_Inference_Confidence_Report
 
-### GATE: G8_Validate_CA_Prompt
+### GATE: G9_Validate_CA_Prompt
 - **Purpose:** Framework compliance check.
 - **Inputs:** `A10_CA_Approved_Prompt_Output`, `A2_CA_Framework_Definition`.
 - **Outputs:** Updates `A11_Conversion_Issues`.
@@ -199,10 +209,10 @@
     1.  Parse `A10_CA_Approved_Prompt_Output`.
     2.  Check for adherence to `A2_CA_Framework_Definition` (e.g., correct primitive structure, explicit inputs/outputs, verification sections).
     3.  Identify any remaining ambiguities or potential inefficiencies.
-- **Verification (Audit):
+- **Verification (Audit):**
     - Ensure `A11_Conversion_Issues` accurately reflects any issues.
 
-### GATE: G9_Request_Clarification
+### GATE: G10_Request_Clarification
 - **Purpose:** Ask minimal, high-impact questions.
 - **Enhancement:**
     Rank questions by how much they would increase confidence.
@@ -216,20 +226,20 @@
 
 ---
 
-## 🔁 Loops (Iterative Refinement)
+## ?? Loops (Iterative Refinement)
 
 ### LOOP: L1_Refinement_Loop
 - **Purpose:** Manages the iterative process of converting and refining the CA prompt until it's approved or clarified.
-- **Gates in Loop:** `G8_Validate_CA_Prompt`, `G9_Request_Clarification`, and potentially re-execution of `G2` through `G6`.
+- **Gates in Loop:** `G9_Validate_CA_Prompt`, `G10_Request_Clarification`, and potentially re-execution of `G2` through `G6`.
 - **Termination Condition:**
     - No high-severity issues remain
     - Confidence exceeds acceptable threshold
     - User declines further clarification
     - Iteration limit reached
 - **Operation:**
-    1.  Execute `G8_Validate_CA_Prompt`.
+    1.  Execute `G9_Validate_CA_Prompt`.
     2.  If `A11_Conversion_Issues` is not empty:
-        -   Execute `G9_Request_Clarification`.
+        -   Execute `G10_Request_Clarification`.
         -   Present `A12_User_Clarification_Request` to the user.
         -   Wait for user input (which would update `A1_Input_Prompt` or provide specific answers).
         -   Re-execute `G1` through `G6` based on user clarification.
@@ -237,19 +247,20 @@
 
 ---
 
-## 🚀 Orchestration Flow (V2)
+## ?? Orchestration Flow (V2)
 
 1.  Initialize static anchors
-2.  Parse input → generate candidates
-3.  Evaluate & promote anchors and gates
-4.  Infer loops and orchestration
-5.  Format CA prompt
-6.  Assess confidence
-7.  Validate
-8.  Enter refinement loop if needed
+2.  Parse input - generate candidates (`G1_Parse_Input_Prompt`)
+3.  Evaluate & promote anchors and gates (`G2_Evaluate_Anchor_Candidates`, `G3_Evaluate_Gate_Candidates`, `G4_Infer_Gates`)
+4.  Infer loops and orchestration (`G5_Infer_Loops`, `G6_Infer_Orchestration`)
+5.  Format CA prompt (`G7_Format_CA_Prompt`)
+6.  Assess confidence (`G8_Assess_Conversion_Confidence`)
+7.  Validate (`G9_Validate_CA_Prompt`)
+8.  Enter refinement loop if needed (`L1_Refinement_Loop`, `G10_Request_Clarification`)
 9.  Output:
     - CA Prompt
     - Confidence Report
     - Outstanding ambiguities (if any)
 
----
+  ---
+  **Written by:** Justin Rodriguez
