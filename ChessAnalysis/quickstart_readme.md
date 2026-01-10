@@ -1,4 +1,6 @@
 ♟️ Chess Analysis Bot — Context Anchoring in Action
+© 2026 Justin Rodriguez
+Licensed under GPL v3
 
 [![License: GPL v3](https://img.shields.io/badge/license-GPLv3-blue.svg)](./LICENSE)
 
