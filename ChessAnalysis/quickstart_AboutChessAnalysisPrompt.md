@@ -132,6 +132,8 @@ This project demonstrates that with precise language structure, a model like GPT
 
 It is not a simulation of software - it is software composed of reasoning.
 
-Author: Justin Rodriguez
+---
+
+**Author:** Justin Rodriguez
 Framework: Context Anchoring v1.1 - Public Domain
 Repository: Florida IT Online - Prompt-Labs
