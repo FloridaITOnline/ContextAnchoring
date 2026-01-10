@@ -1,311 +1,186 @@
-# 🧩 Core Primitives of Context Anchoring
-© 2026 Justin Rodriguez
-Licensed under GPL v3
+# 🧩 Core Primitives of Context Anchoring  
+2026 Justin Rodriguez  
+Licensed under GPL v3  
 
-*Version 1.3 — GPL v3 Open Framework*  
+*Version 1.4 — GPL v3 Open Framework*  
 [![License: GPL v3](https://img.shields.io/badge/license-GPLv3-blue.svg)](./LICENSE)
 
-> **Context Anchoring is a prompt-native computation model built on three core primitives —  
-Anchors → Gates → Loops — that enable persistent state, structured reasoning, and controlled iteration, entirely inside an LLM’s context window.**
+> **Context Anchoring is a prompt-native computation model built on three core primitives—Anchors, Gates, and Loops—that enable persistent state, structured reasoning, and controlled iteration inside an LLM’s context window.**
 
-This document replaces earlier “Seven Atoms” terminology with a more compact, more accurate framework.
+This write-up presents the current structure and vocabulary for the framework.
 
 ---
 
-# 🧭 Conceptual Overview
+# 🧭 The Big Idea
 
-Traditional prompting treats each turn as isolated.  
+Traditional prompting treats each turn like a fresh start.  
 Context Anchoring treats prompting as **computation**.
 
-The three core primitives form a closed reasoning cycle:
+In this model, you build a small reasoning engine that cycles through three primitives:
 
 ```
-
-ANCHOR(S) → GATE(S) → LOOP(optional) → updated ANCHOR(S)
-
+ANCHOR(S) → GATE(S) → LOOP (optional) → updated ANCHOR(S)
 ```
 
+Everything else—auditing, constraints, intent, compression—is behavior layered **on top** of these primitives, not a primitive itself.
 
-Everything else — auditing, constraints, intent, compression — is a **behavior applied to these primitives**, not a primitive itself.
-
-This makes Context Anchoring:
-- Deterministic
-- Modular
-- Stateful
-- Testable
-- Extensible
+That’s why this approach is:
+- Deterministic  
+- Modular  
+- Stateful  
+- Testable  
+- Extensible  
 
 And critically:
 > No fine-tuning.  
 > No external database.  
 > No hidden memory.  
-> Everything occurs **inside** the prompt context boundary (~10 KB).
+> Everything lives inside the prompt window.
 
 ---
 
-# ⚛️ The Three Primitives
+# The Three Primitives (In Plain Language)
 
 | Primitive | Definition | Analogy | Role |
 |-----------|------------|---------|------|
-| **Anchor** | A named, persistent context register. | Variable stored in memory | Holds stable state across steps |
-| **Gate** | A reasoning step that reads/updates anchors. | Function / transformation | Performs logic or evaluation |
-| **Loop** | Optional repetition of Gates until stability. | Iteration / while-loop | Enables progressive refinement |
-
-These three structures form the **core computation graph**.
+| **Anchor** | A named, persistent context register | Variable in memory | Holds stable state |
+| **Gate** | A reasoning step that reads/updates anchors | Function | Performs logic |
+| **Loop** | Optional repetition until stability | While-loop | Enables refinement |
 
 ---
 
-## ✅ 1) Anchor
+## 1) Anchor — Your Stable Memory
 
-> **A stable, named reference register that preserves task context across steps.**
+An **Anchor** is a named reference point that preserves task context across steps.
 
 Anchors define:
-- What remains true
-- Scope and boundaries
-- Current state
-- Shared knowledge
-- Operational parameters
+- What stays true  
+- The scope of the task  
+- Current state  
+- Shared knowledge  
+- Operational parameters  
 
-Anchors may be:
-- Static (objective / domain)
-- Dynamic (score, progress)
-- Derived (results of Gate output)
+They can be:
+- **Static** (objective, domain)
+- **Dynamic** (score, progress)
+- **Derived** (gate outputs)
 
-They change only when explicitly updated.
-
-Examples:
+Example:
 
 ```
-
-A0 — Objective: 3rd grade weather vocabulary
-A1 — Difficulty: Easy
-A2 — Domain: Weather terms only
-A3 — Progress: {correct: 2, incorrect: 1}
-
+A0 - Objective: 3rd grade weather vocabulary  
+A1 - Difficulty: Easy  
+A2 - Domain: Weather terms only  
+A3 - Progress: {correct: 2, incorrect: 1}
 ```
 
-
-Anchor properties:
-- Named
-- Persistent
-- Explicit
-- Referencable
-- Minimal
-- In-bounds definition
-
-Anchors ≈ CPU registers  
-> Small but essential units of persistent state.
+Think of Anchors like CPU registers: small, stable, essential.
 
 ---
 
-## ✅ 2) Gate
+## 2) Gate — Where Reasoning Happens
 
-> **A Gate is a bounded reasoning step that reads from Anchors, performs a transformation, and optionally updates Anchors.**
+A **Gate** is a bounded reasoning step. It reads Anchors, performs a transformation, and may write updates back.
 
-A Gate:
-- Consumes Anchor context
-- Produces validated output
-- Optionally writes updated state back into Anchors
+Gates can:
+- Generate outputs  
+- Evaluate correctness  
+- Transform formats  
+- Summarize state  
+- Enforce contracts  
 
-Gates are modular and pipeline-friendly.
-
-A Gate may:
-- Generate output
-- Evaluate correctness
-- Transform structure
-- Summarize state
-- Enforce contracts
-
-Generic form:
+Formally:
 
 ```
 Gate(Input Anchors) → Output
 ```
-Or iterative:
+
+Or, when updating state:
 
 ```
 Gate(A_in) → A_out
 ```
 
-Gates can nest, chain, or run sequentially.
-
-Gates ≈ Functions  
-> They create structured reasoning flows between Anchors.
+Gates are your **functions**.
 
 ---
 
-## ✅ 3) Loop (Optional)
+## 3) Loop — Controlled Iteration
 
-> **The Loop repeats Gates until a stop condition is satisfied — stability, teacher command, or exhaustion.**
+A **Loop** repeats Gates until a stop condition is met:
+- Objective reached  
+- Stable output  
+- Teacher stop  
+- Threshold hit  
 
-Loops enable:
-- Iterative refinement
-- Progressive reasoning
-- Controlled repetition
-
-Termination conditions:
-- Objective met
-- Teacher stop
-- Stable output
-- Threshold reached
-
-Loops ≈ While-loops  
-> They allow controlled iterative computation inside the window.
-
-Not all workflows need loops — many are single-pass.
-
-But loops enable:
-- Self-correction
-- Progressive summarization
-- Multi-stage reasoning
+Not every workflow needs a loop—but when you want refinement, self-correction, or progressive summarization, this is the tool.
 
 ---
 
 # 🔧 Cross-Cutting Behaviors
 
-These are not primitives — they decorate Anchors + Gates.
+These are not primitives. They *decorate* Anchors and Gates.
 
 | Behavior | Role |
 |----------|------|
-| **Verification (Audit)** | Checks contract adherence, correctness, safety |
-| **Constraints** | Define boundaries (domain, structure, safety) |
-| **Intent** | Declares objective (often stored as Anchor A0) |
-| **Compression** | Summarizes state to fit within context window |
-| **State Transfer** | Occurs automatically when Anchors update |
-
-These behaviors may occur:
-- At Anchor creation
-- Before a Gate
-- Inside a Gate
-- After a Gate
-- At the transition to next Loop
-
-Verification is **contextual**, not primitive.  
-It can target:
-- Single Anchor
-- Multiple Anchors
-- Gate output
-- Inter-anchor relationships
-
-This gives flexibility without expanding the core primitive set.
+| **Verification (Audit)** | Checks correctness and compliance |
+| **Constraints** | Define boundaries |
+| **Intent** | Declares the objective (often A0) |
+| **Compression** | Summarizes state to fit the window |
+| **State Transfer** | Occurs when Anchors update |
 
 ---
 
-# 🧠 How They Work Together
+# 🧠 How It Works (End-to-End Example)
 
-       ┌───────────┐
-       │  Anchors  │
-       │ (State)   │
-       └─────┬─────┘
-             │ read
-             ▼
-        ┌─────────┐
-        │  Gate   │
-        │Compute  │
-        └─────┬───┘
-              │ write
-              ▼
-       ┌──────────────┐
-       │UpdatedAnchor │
-       └─────┬────────┘
-             │
-             ▼
-      (Optional Loop)
-
-
-This creates a reasoning pipeline with memory.
-
----
-
-# 🔄 Example
-
-### Step 1 — Anchors
+**Step 1 — Anchors**
 
 ```
-A0 — Objective: Weather vocab
-A1 — Difficulty: Easy
-A2 — Domain: Weather terms
-A3 — Score: 0
-
+A0 - Objective: Weather vocab  
+A1 - Difficulty: Easy  
+A2 - Domain: Weather terms  
+A3 - Score: 0
 ```
 
-
-### Step 2 — Gate (generate)
+**Step 2 — Gate (generate)**  
 > Read A0–A2 → produce puzzle
 
-### Step 3 — Gate (evaluate)
-> Validate student answer → update A3
+**Step 3 — Gate (evaluate)**  
+> Validate answer → update A3
 
-### Step 4 — Loop
+**Step 4 — Loop**  
 > Repeat until teacher stops
 
-The Anchors maintain continuity across Gates.
-
----
-
-# 🧬 Comparison With Earlier “Seven Atoms”
-
-Old View → 7 atoms  
-New View → 3 primitives + cross behaviors
-
-| Old Atom | New Home |
-|----------|----------|
-| Intent | Anchor (A0) |
-| Constraint | Anchor / Gate contract |
-| Gate | Gate |
-| Audit | Verification behavior |
-| Anchor | Anchor |
-| Reinforcement Loop | Loop |
-| State Transfer | Anchor update |
-
-This simplification removes redundancy and clarifies relationships.
-
----
-
-# 🏗️ Molecular Structure (Updated)
-
-> **Anchors = memory nodes**  
-> **Gates = reasoning edges**  
-> **Loops = repetition cycle**
-
-This is a **graph**, not a stack.
-
-Multiple gates can operate over the same anchor graph.
+The Anchors preserve continuity across all steps.
 
 ---
 
 # 📏 Runtime Boundaries
 
-All Anchors + Gates + operational context must fit inside ~10 KB.  
+All Anchors + Gates + operational context should fit inside ~10 KB.
 
-This ensures that:
-- The model never loses its working set
-- All persistent state is visible
-- Deterministic behavior is achievable
+That gives you:
+- Full visibility of state  
+- No truncation  
+- More deterministic behavior  
 
-> **Runtime limit = stability limit.**
-
-This is a *design constraint* of prompt-native computation.
+> **Runtime limit = stability limit.**  
+It’s a design constraint, not a hard law.
 
 ---
 
-# ✅ Closing Summary
+# Closing Summary
 
-Context Anchoring relies on **three core primitives**:
+Context Anchoring is built on three primitives:
 
 > **ANCHOR → GATE → LOOP**
 
-- **Anchors** store named, persistent state
-- **Gates** execute reasoning over Anchors
-- **Loops** iterate Gates until complete
+They turn prompts into **programmable systems**:
+- Anchors store state  
+- Gates perform reasoning  
+- Loops refine behavior  
 
-Cross-cutting behaviors like verification, constraint, and compression support these primitives but are not primitive themselves.
-
-This simplification makes the model:
-- Easier to teach
-- Easier to implement
-- More faithful to how prompt-native computation actually works
-- More modular and less redundant
+Everything else is behavior layered on top.
 
 ---
 
