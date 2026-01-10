@@ -1,8 +1,8 @@
-# ✅ Anchor — Detailed Definition (Context Anchoring)
+# ✅ **Anchor — Detailed Definition (Context Anchoring)**
 © 2026 Justin Rodriguez
 Licensed under GPL v3
 
-*Version 1.2 — GPL v3 Open Framework*  
+*Version 1.3 — GPL v3 Open Framework*  
 [![License: GPL v3](https://img.shields.io/badge/license-GPLv3-blue.svg)](./LICENSE)
 
 ## 📌 What Is an Anchor?
@@ -103,14 +103,14 @@ Anchors must be:
 
 ## 🔠 Typical Anchor Types
 
-| Category | Function |
-|----------|----------|
-| **Objective** | Defines task goal |
-| **Scope / Domain** | Limits content |
-| **Difficulty** | Sets complexity |
-| **Format / Structure** | Controls procedural shape |
-| **State** | Stores evolving info |
-| **Safety Constraints** | Ensures guardrails |
+  | Category | Function | Examples |
+  |----------|----------|----------|
+  | **Objective** | Defines task goal | “Draft onboarding email”, “Analyze chess game” |
+  | **Scope / Domain** | Limits content | UI/UX only, Admin vs User role, Finance domain |
+  | **Difficulty** | Sets complexity | Easy, Medium, Hard |
+  | **Format / Structure** | Controls procedural shape | JSON output, 3‑step bullet list, Markdown table |
+  | **State** | Stores evolving info | Score: 2–1, Current phase: “Middlegame” |
+  | **Safety Constraints** | Ensures guardrails | No PII, medical disclaimer required |
 
 ---
 
@@ -125,5 +125,5 @@ Each anchor has:
 Example:
 
 ---
-** Written By: ** Justin Rodriguez
+**Written By:** Justin Rodriguez
 
