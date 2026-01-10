@@ -1,8 +1,10 @@
-🧩 Quickstart Orchestrator Prompt — v1.4.3 (Compact)
+🧩 Quickstart Orchestrator Prompt — v2.0
 
+© 2026 Justin Rodriguez
+Licensed under GPL v3
 [![License: GPL v3](https://img.shields.io/badge/license-GPLv3-blue.svg)](./LICENSE)
 
-# Chess Analysis Orchestrator — Primitives-Based (v1.0)
+# Chess Analysis Orchestrator — Primitives-Based
 
 **Based on:** `ChessAnalysis_quickstart.md`
 **Framework:** Context Anchoring (Anchors → Gates → Loops)
@@ -254,4 +256,4 @@
 8.  **Session End:** Print "Thank you for the analysis session!"
 
 ---
-
+**Written by:** Justin Rodriguez
