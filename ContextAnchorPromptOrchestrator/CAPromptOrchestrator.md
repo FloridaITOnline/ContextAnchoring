@@ -5,7 +5,7 @@
 
 **Purpose:** To conceptually design a Context Anchoring (CA) orchestrator that transforms an unstructured prompt into a structured, Context Anchor Approved Prompt, while explicitly modeling uncertainty, confidence, ambiguity, and partial success.
 
-**Design Philosophy (New):**
+**Design Philosophy:**
 - Treat ambiguity as data, not failure
 - Distinguish inferred vs confirmed structures
 - Allow partial convergence, not only binary success
