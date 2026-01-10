@@ -1,4 +1,7 @@
 # 🧩 Core Primitives of Context Anchoring
+© 2026 Justin Rodriguez
+Licensed under GPL v3
+
 *Version 1.3 — GPL v3 Open Framework*  
 [![License: GPL v3](https://img.shields.io/badge/license-GPLv3-blue.svg)](./LICENSE)
 
