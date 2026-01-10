@@ -11,9 +11,9 @@ Licensed under GPL v3
 > **A Gate is a discrete reasoning step that transforms anchored context into new output.  
 Each Gate has defined input, a constrained operation, and a predictable output.**
 
-Gates function like **procedural blocks** in a pipeline — executing a bounded task and passing results forward.
+Gates function like **procedural blocks** in a pipeline—executing a bounded task and passing results forward.
 
-They are the “work units” of Context Anchoring.
+They are the work units of Context Anchoring.
 
 ---
 
@@ -26,7 +26,7 @@ They are the “work units” of Context Anchoring.
    Consumes Anchors and/or previous Gate output.
 
 3) **Deterministic**  
-   Same Anchors → similar output.
+   Same Anchors → Similar output.
 
 4) **Scoped**  
    Performs one semantic task only.
@@ -77,7 +77,7 @@ They must be:
 2) **Execution**  
    Perform defined reasoning / generation
 
-3) **Audit (optional/encouraged)**  
+3) **Audit (optional but encouraged)**  
    Validate against Contracts
 
 4) **Output**  
