@@ -157,7 +157,7 @@ The Anchors preserve continuity across all steps.
 
 # 📏 Runtime Boundaries
 
-All Anchors + Gates + operational context should fit inside ~10 KB.
+All Anchors + Gates + operational context should fit inside the available tokens for the model in use. Use the approximation ~10 KB (10,240 characters, ≈ 3,500–4,000 tokens).
 
 That gives you:
 - Full visibility of state  
