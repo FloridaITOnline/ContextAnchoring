@@ -1,6 +1,6 @@
 # Prompt-to-ContextAnchor - Prompt Orchestrator
 
-*Version 1.2 - GPL v3 Open Framework*  
+*Version 1.25 - GPL v3 Open Framework*  
 [![License: GPL v3](https://img.shields.io/badge/license-GPLv3-blue.svg)](./LICENSE)
 
 **Purpose:** To conceptually design a Context Anchoring (CA) orchestrator that transforms an unstructured prompt into a structured, Context Anchor Approved Prompt, while explicitly modeling uncertainty, confidence, ambiguity, and partial success.
@@ -11,8 +11,7 @@
 - Allow partial convergence, not only binary success
 - Preserve human-in-the-loop control without collapsing the system
 
-**Disclaimer:** This document outlines the *design* of such an orchestrator using the Context Anchoring framework. Implementing a fully functional version would require significant iterative development, testing, and refinement within an LLM environment, likely involving multiple turns and human oversight due to the inherent complexity of inferring intent from unstructured input.
-
+- **Disclaimer:** : This document outlines the design of a Context Anchoring (CA) orchestrator and can be used as a prompt editor or design guide. It assumes you start with a working prompt. Finalizing a production‑ready version of your prompt still requires thorough testing, iterative refinement in an LLM environment, and likely multiple passes with human oversight due to the complexity of inferring intent from unstructured input.
 ---
 
 ### ANCHOR: A0_Objective
@@ -105,8 +104,6 @@
 - **Schema:** Ordered list of questions, ranked by impact
 
 ---
-
-## ?? Gates (Conversion Logic)
 
 ### GATE: G1_Parse_Input_Prompt
 - **Purpose:** Initial semantic analysis.
@@ -245,7 +242,7 @@
 
 ---
 
-## ?? Orchestration Flow (V2)
+## Orchestration Flow (V2)
 
 1.  Initialize static anchors
 2.  Parse input - generate candidates (`G1_Parse_Input_Prompt`)
