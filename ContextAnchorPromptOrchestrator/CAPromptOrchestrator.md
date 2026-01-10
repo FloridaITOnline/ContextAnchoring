@@ -1,4 +1,4 @@
-# Prompt-to-CA-Prompt Orchestrator - Conceptual Design
+# Prompt-to-ContextAnchor - Prompt Orchestrator
 
 *Version 1.2 - GPL v3 Open Framework*  
 [![License: GPL v3](https://img.shields.io/badge/license-GPLv3-blue.svg)](./LICENSE)
@@ -14,8 +14,6 @@
 **Disclaimer:** This document outlines the *design* of such an orchestrator using the Context Anchoring framework. Implementing a fully functional version would require significant iterative development, testing, and refinement within an LLM environment, likely involving multiple turns and human oversight due to the inherent complexity of inferring intent from unstructured input.
 
 ---
-
-## ?? Global Anchors (Persistent State & Configuration for the Conversion Process)
 
 ### ANCHOR: A0_Objective
 - **Purpose:** Core objective of the orchestrator.
