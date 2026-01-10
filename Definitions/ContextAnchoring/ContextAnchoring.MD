@@ -96,14 +96,14 @@ G --> H["Anchored State Persisted for Next Cycle"]
 
 ## ⚙️ Runtime and Determinism (Example: ~10 KB, typically 3,500–4,000 tokens)
 
-  Context Anchoring orchestrators us an aproximation of ~10 KB or 10,240 characters, typically equallying about 3,500–4,000 tokens. Please ensure to optimize for token availability of the specific model in use.
-  This limit acts as a **runtime governor**, ensuring:
+  Context Anchoring Prompts us an aproximation of ~10 KB or 10,240 characters, typically equallying about 3,500–4,000 tokens. Please ensure to optimize for token availability of the specific model in use.
+  This limit acts as a **runtime governor**. We reffer to this as the **Runtime Boundary** , ensuring:
 
   - **Deterministic behavior** within the model’s attention window.
   - **Stable state anchoring** without context truncation.
   - **Efficient multi-gate execution** (e.g., JSON → CSV → Commentary → UX).
 
-  Orchestrator size should align with the model’s maximum token budget. ~10 KB is a practical target for determinism
+  The Prompts size should align with the model’s maximum token budget. ~10 KB is a practical target for determinism
   and repeatable state anchoring, but the optimal size varies by model and available context.
 ---
 
