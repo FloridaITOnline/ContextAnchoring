@@ -12,6 +12,8 @@
 - Preserve human-in-the-loop control without collapsing the system
 
 - **Disclaimer:** This document outlines the design of a Context Anchoring (CA) orchestrator and can be used as a prompt editor or design guide. It assumes you start with a working prompt. Finalizing a production‑ready version of your prompt still requires thorough testing, iterative refinement in an LLM environment, and likely multiple passes with human oversight due to the complexity of inferring intent from unstructured input.
+
+- Provide this prompt to your LLM and then ask it to convert your prompt. The LLM will accept the input and provide the output of the Context Anchoring Style Prompt.
 ---
 
 ### ANCHOR: A0_Objective
