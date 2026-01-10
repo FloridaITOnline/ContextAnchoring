@@ -1,5 +1,11 @@
 # ✅ Gate — Detailed Definition (Context Anchoring)
 
+© 2026 Justin Rodriguez
+Licensed under GPL v3
+
+*Version 1.2 — GPL v3 Open Framework*  
+[![License: GPL v3](https://img.shields.io/badge/license-GPLv3-blue.svg)](./LICENSE)
+
 ## 📌 What Is a Gate?
 
 > **A Gate is a discrete reasoning step that transforms anchored context into new output.  
@@ -114,6 +120,9 @@ Gates are where **reasoning happens.**
 - **Gates manipulate that state**
 
 Gates enable controlled iterative reasoning under the Context Anchoring model.
+
+---
+**Written by:** Justin Rodriguez
 
 ---
 
