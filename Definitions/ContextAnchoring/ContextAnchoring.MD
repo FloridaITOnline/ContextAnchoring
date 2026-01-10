@@ -96,7 +96,7 @@ G --> H["Anchored State Persisted for Next Cycle"]
 
 ## ⚙️ Runtime and Determinism (Example: ~10 KB, typically 3,500–4,000 tokens)
 
-  All Context Anchoring orchestrators are bounded by ~10 KB (10,240 characters, typically 3,500–4,000 tokens).
+  Context Anchoring orchestrators us an aproximation of ~10 KB or 10,240 characters, typically equallying about 3,500–4,000 tokens. Please ensure to optimize for token availability of the specific model in use.
   This limit acts as a **runtime governor**, ensuring:
 
   - **Deterministic behavior** within the model’s attention window.
