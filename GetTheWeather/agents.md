@@ -30,4 +30,8 @@ Licensed under GPL v3
 77 = Snow grains
 80,81,82 = Rain showers
 85,86 = Snow showers
+
 95,96,99 = Thunderstorm
+
+--- 
+**Written by:** Justin Rodriguez
