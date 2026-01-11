@@ -6,7 +6,15 @@ Licensed under GPL v3
 *Version 1.4 — GPL v3 Open Framework*  
 [![License: GPL v3](https://img.shields.io/badge/license-GPLv3-blue.svg)](./LICENSE)
 
-This folder contains a small, local weather reporter pipeline powered by Codex CLI and accessed via Powershell. It fetches live weather data, feeds it to a Context Anchoring orchestrator, and writes a fun, personality-driven weather update to a local output file.
+This project is a small but fun experiment in turning raw data into personality.  
+It’s a local weather-reporting pipeline built with **PowerShell**, **Codex CLI**, and a **Context Anchoring orchestrator**.
+
+Instead of just dumping JSON to a screen, it:
+- Grabs live weather data,
+- Feeds it into a structured prompt,
+- And turns it into a playful, human-sounding forecast — complete with a TV-style personality.
+
+Think: “Weather bot with a soul.”
 
 ## Overview
 
