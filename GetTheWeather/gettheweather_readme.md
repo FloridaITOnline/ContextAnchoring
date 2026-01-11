@@ -24,7 +24,8 @@ The flow is:
 3) Use Codex CLI (authenticated) to generate a weather report.
 4) Write the final report to `output.txt`.
 
-Codex CLI requires authentication. A free tier may be available depending on your account and region.
+Codex CLI requires authentication. A free tier may be available depending on your account and region. Please see Open AI's Install instructions 
+https://developers.openai.com/codex/cli
 
 ## Files
 
