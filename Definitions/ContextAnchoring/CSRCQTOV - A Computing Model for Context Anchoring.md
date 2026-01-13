@@ -75,128 +75,108 @@ It serves as a complete example of CSRCQTOV in practice.
 
 ---
 
-### 4. CSRCQTOV Applied to the Orchestrator
+## 4. CSRCQTOV Applied to the Orchestrator
 
-**4.1 Code  Gates as Functions**
+### 4.1 Code — Gates as Functions
 
-The orchestrator defines Gates:
+The orchestrator defines the following Gates:
 
-- G1_Parse_Input_Prompt
+- `G1_Parse_Input_Prompt`  
+- `G2_Evaluate_Anchor_Candidates`  
+- `G3_Evaluate_Gate_Candidates`  
+- `G4_Infer_Gates`  
+- `G5_Infer_Loops`  
+- `G6_Infer_Orchestration`  
+- `G7_Format_CA_Prompt`  
+- `G8_Assess_Conversion_Confidence`  
+- `G9_Validate_CA_Prompt`  
+- `G10_Request_Clarification`  
 
-- G2_Evaluate_Anchor_Candidates
+Each Gate specifies:
 
-- G3_Evaluate_Gate_Candidates
+- Purpose  
+- Inputs  
+- Outputs  
+- Operation  
+- Verification  
 
-- G4_Infer_Gates
+These are executable reasoning units—functions written in language.
 
-- G5_Infer_Loops
+---
 
-- G6_Infer_Orchestration
+### 4.2 State — Anchors as Semantic Memory
 
-- G7_Format_CA_Prompt
+Anchors `A0` through `A12` store:
 
-- G8_Assess_Conversion_Confidence
-
-- G9_Validate_CA_Prompt
-
-- G10_Request_Clarification
-
-
-**Each Gate specifies:**
-
-Purpose
-
-Inputs
-
-Outputs
-
-Operation
-
-Verification
-
-These are executable reasoning unitsfunctions written in language.
-
-**4.2 State  Anchors as Semantic Memory**
-
-Anchors A0A12 store:
-
-Task objective
-
-Input prompt
-
-Candidate anchors and gates
-
-Confirmed anchors and gates
-
-Loops
-
-Issues
-
-Confidence metrics
-
-Final output
+- Task objective  
+- Input prompt  
+- Candidate anchors and gates  
+- Confirmed anchors and gates  
+- Loops  
+- Issues  
+- Confidence metrics  
+- Final output  
 
 Anchors are:
 
-Named
-
-Typed (Static/Dynamic)
-
-Structured by schema
-
-Persisted through iteration
+- Named  
+- Typed (Static / Dynamic)  
+- Structured by schema  
+- Persisted through iteration  
 
 They function as variables holding semantic state.
 
-**4.3 Runtime  Attention Window**
+---
 
-All reasoning occurs inside the models attention window:
+### 4.3 Runtime — Attention Window
 
-Anchors
+All reasoning occurs inside the model’s attention window:
 
-Gates
+- Anchors  
+- Gates  
+- Flow  
+- Issues  
+- Audits  
 
-Flow
+This window is the execution environment.  
+Re-feeding structured output simulates persistent memory across runs.
 
-Issues
+---
 
-Audits
-
-This window is the execution environment. Re-feeding structured output simulates persistent memory across runs.
-
-**4.4 Compiler  Prompt Parsing**
+### 4.4 Compiler — Prompt Parsing
 
 Compiler-like behavior appears as:
 
-Front-end: G1_Parse_Input_Prompt
+**Front-end:**  
+- `G1_Parse_Input_Prompt`  
+  - Infers intent, constraints, and entities  
 
-Infers intent, constraints, entities
+**Back-end:**  
+- `G9_Validate_CA_Prompt`  
+  - Checks syntax, schema, and structure  
 
-Back-end: G9_Validate_CA_Prompt
-
-Checks syntax, schema, structure
-
-Syntax consists of labels, headers, schemas.
+Syntax consists of labels, headers, and schemas.  
 Semantics consists of inferred goals and constraints.
 
-**4.5 QA  Reasoning Shape Audit**
+---
+
+### 4.5 QA — Reasoning Shape Audit
 
 QA evaluates whether:
 
-Required Gates executed
-
-Expected reasoning steps appear
-
-Coverage is sufficient
+- Required Gates were executed  
+- Expected reasoning steps appear  
+- Coverage is sufficient  
 
 QA audits the reasoning process, not the result.
+
 In the orchestrator this appears in:
 
-Gate verification sections
+- Gate verification sections  
+- `A11_Conversion_Issues`  
+- Confidence scoring  
 
-A11_Conversion_Issues
-
-Confidence scoring
+---
 
 **4.6 Testing  Iterative Execution**
 
