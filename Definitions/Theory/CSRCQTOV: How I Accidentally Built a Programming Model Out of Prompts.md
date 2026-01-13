@@ -3,84 +3,80 @@
 **Justin Rodriguez — 2026**  
 *Context Anchoring Research Notes*  
 
-*Version 1.1 — GPL v3 Open Framework*  
+*Version 1.2 — GPL v3 Open Framework*  
 [![License: GPL v3](https://img.shields.io/badge/license-GPLv3-blue.svg)](./LICENSE)
 
 ---
 
 ## Why I Stopped Treating Prompts Like Messages
 
-Most people talk to LLMs like they’re chatting with a smart person.  
+Most people talk to LLMs as if they are chatting with a smart person.  
 That works—until it doesn’t.
 
-Once you try to build anything repeatable—analysis, pipelines, orchestrators, QA flows, documentation generators—you run into the same problem:
+As soon as you try to build anything repeatable—analysis systems, pipelines, orchestrators, QA flows, documentation generators—you run into the same pattern:
 
 - The model kind of remembers  
 - It usually follows rules  
 - It mostly keeps structure  
 
-That’s not engineering. That’s vibes.
+That is not engineering. That is intuition and hope.
 
-At the end of the day, where is the consistency?
-Ever use the same prompt and get a different answer?
+At some point, you have to ask: where is the consistency?  
+Have you ever used the same prompt twice and received two different answers?
 
-There’s math behind that.
-The bot is the same bot every time, but it can take a different path to “true” based on many factors. That’s why asking the same question twice can give slightly different answers. It’s sampling from probability distributions influenced by:
+There is math behind that.
 
-Randomness (temperature, sampling)
+The model is the same model each time, but it does not “compute” answers—it samples them. It can take different reasoning paths based on probability, context, and internal state. That is why asking the same question twice can produce slightly different results. Those results are shaped by:
 
-Context differences
+- Randomness (temperature and sampling)  
+- Context differences  
+- Hidden state interactions  
+- Token-level probability shifts  
 
-Hidden state interactions
+This becomes risky when the system is expected to find the *right* answer—especially in agentic or automated systems. Small changes in reasoning paths can lead to large inconsistencies.
 
-Token-level probabilities
-
-This gets dangerous when you’re trying to predict the right answer—like in agentic AI. Small differences in reasoning paths can cause big inconsistencies.
-
-Context Anchoring tries to fix that by adding explicit structure—named variables, rules, and flow—so the model has a configurable “state” instead of just vibes.
+Context Anchoring attempts to address this by adding explicit structure—named variables, defined rules, and controlled flow—so the model has a configurable “state” instead of relying on vibes.
 
 ---
 
 ## Treating Prompts Like Programs
 
-So I started treating prompts like programs:
+That shift led me to start treating prompts like programs:
 
 - With memory  
 - With functions  
 - With validation  
 - With retry logic  
 
-That eventually became **Context Anchoring (CA).**
+Over time, that approach became **Context Anchoring (CA).**
 
-And when I looked at what I’d built, I realized something weird:
+Looking back, I realized something unexpected:  
+I had not just built a prompt framework. I had recreated a form of software architecture—inside language itself.
 
-I hadn’t just made a prompt framework.  
-I had accidentally recreated a full software architecture—inside language.
-
-That architecture compresses into one stupid-sounding mnemonic:
+That architecture can be summarized by one strange mnemonic:
 
 **CSRCQTOV — Computer Science Really Costs Q T Oranges Validation.**
 
-Absurd on purpose. Because you remember absurd.  
-“Cuties” were the little oranges we got as kids. I still remember how they sprayed when you peeled them and how good they smelled. Q, T, and Cutie aren’t the same thing—but if you go with it, it sticks.
+Absurd on purpose—because absurd is memorable.  
+“Cuties” were the little oranges many of us grew up with. You remember the smell when you peel one, the spray when it opens. Q, T, and Cutie are not the same thing—but if you accept the stretch, the idea sticks.
 
 ---
 
 ## The Core Mapping
 
-Here’s the table that started it all:
+Here is the table that started it all:
 
 Traditional Software | Context Anchoring Equivalent | What It Means  
 Code | Gates & Reasoning Chains | Gates are functions written in language  
 State | Anchored Context | Anchors are named semantic variables  
 Runtime | Attention Window | The model’s context window is the CPU + RAM  
-Compiler | Prompt Parser | Language gets parsed into reasoning ops  
+Compiler | Prompt Parser | Language gets parsed into reasoning operations  
 QA | Gate Tests & Reasoning Shape | Did the reasoning process look right?  
 Testing | Iterative Loops | Re-run logic until it works or stops  
 Output | Self-Audit Section | Output validates itself  
 Validation | Assertions | Runtime checks for correctness  
 
-That’s CSRCQTOV:
+That is CSRCQTOV:
 
 - Code  
 - State  
@@ -89,7 +85,7 @@ That’s CSRCQTOV:
 - QA / Testing <> Output  
 - Validation  
 
-This isn’t metaphor poetry.  
+This is not metaphor poetry.  
 This is literal structure.
 
 | **Layer** | **Traditional Software** | **Context Anchoring Equivalent** | **Explanation** |
@@ -105,31 +101,31 @@ This is literal structure.
 
 ## What CSRCQTOV Is Really Claiming
 
-CSRCQTOV says:
+CSRCQTOV asserts that:
 
 - Prompts can behave like programs  
 - Language can carry executable logic  
 - Reasoning can be modular  
 - Memory can be simulated with names  
-- Validation can live inside text  
+- Validation can exist inside text  
 
-By “executable,” I don’t mean “runs on a CPU.”
+By “executable,” this does not mean “runs on a CPU.”
 
-I mean:
+It means:
 
 > Reproducible reasoning steps, under declared constraints, with auditable outcomes.
 
-If you can re-run it, inspect it, validate it, and loop it—that’s computation, regardless of medium.
+If you can re-run it, inspect it, validate it, and loop it—then it is computation, regardless of medium.
 
-Language just happens to be the runtime now.
+Language simply happens to be the runtime now.
 
 ---
 
-## How My Prompt-to-ContextAnchor Orchestrator Fits CSRCQTOV
+## How the Prompt-to-ContextAnchor Orchestrator Fits CSRCQTOV
 
 ### Code — Gates
 
-My system defines Gates like:
+The system defines Gates such as:
 
 - G1_Parse_Input_Prompt  
 - G2_Evaluate_Anchor_Candidates  
@@ -142,7 +138,7 @@ My system defines Gates like:
 - G9_Validate_CA_Prompt  
 - G10_Request_Clarification  
 
-Each Gate has:
+Each Gate includes:
 
 - Purpose  
 - Inputs  
@@ -150,26 +146,26 @@ Each Gate has:
 - Operation  
 - Verification  
 
-That’s a function signature, written in English.
+This is a function signature, expressed in language.
 
 ---
 
 ### State — Anchors
 
-Anchors A0 through A12 are my memory model:
+Anchors A0 through A12 act as semantic memory:
 
 - Typed (Static / Dynamic)  
-- Have schemas  
-- Track provenance  
-- Track confidence  
+- Structured by schema  
+- Tracking provenance  
+- Tracking confidence  
 
-They behave exactly like variables—except semantic instead of numeric.
+They behave like variables—except semantic instead of numeric.
 
 ---
 
 ### Runtime — Attention Window
 
-Everything runs inside the model’s attention window:
+All reasoning occurs inside the model’s attention window:
 
 - Anchors  
 - Gates  
@@ -177,29 +173,28 @@ Everything runs inside the model’s attention window:
 - Issues  
 - Audits  
 
-That window is the runtime.
-
-When I re-feed structured output, I’m simulating state persistence across executions.
+This window is the execution environment.  
+Re-feeding structured output simulates persistence across runs.
 
 ---
 
 ### Compiler — Prompt Parser
 
-Compiler behavior shows up as:
+Compiler behavior appears as:
 
 - G1_Parse_Input_Prompt → front-end  
 - G9_Validate_CA_Prompt → back-end  
 
-Syntax = labels, headers, schemas  
-Semantics = inferred intent, goals, constraints  
+Syntax consists of labels, headers, and schemas.  
+Semantics consists of inferred intent, goals, and constraints.
 
-That’s a real parse + validate pipeline—just in language.
+This is a real parse-and-validate pipeline—just written in language.
 
 ---
 
-## QA vs Validation (They Are Not the Same)
+## QA vs Validation
 
-People mix these up, so here’s the split:
+These are not the same thing.
 
 **QA asks:**  
 Did the reasoning process follow the expected shape?
@@ -209,8 +204,8 @@ Does the final artifact satisfy required constraints?
 
 So:
 
-- QA audits how you reasoned  
-- Validation audits what you produced  
+- QA audits how reasoning happened  
+- Validation audits what was produced  
 
 Both matter. They are not interchangeable.
 
@@ -218,9 +213,9 @@ Both matter. They are not interchangeable.
 
 ## Testing vs Iteration
 
-Also different:
+These are also distinct.
 
-**Testing** tries known paths:
+**Testing** explores known paths:
 
 - Canonical  
 - Boundary  
@@ -228,19 +223,23 @@ Also different:
 
 **Iteration** re-runs logic until:
 
-- Errors are gone  
+- Errors disappear  
 - Confidence is high  
-- Or you hit a stop condition  
+- Or a stop condition is reached  
 
-Testing finds errors.  
+Testing finds problems.  
 Iteration fixes them.
 
 ---
 
 ## Output — Self-Audit
 
-My outputs don’t just give answers.  
-They explain whether they obeyed the rules. This is known as '**Obeying the Behavioral Contract**' in Context Anchoring. We set a Behavioral Contract with the Anchors and Gates with the LLM. The Testing Primitive ensures the LLM is adhering to the Behavioral Contract it agreed to. This Output is what we use to test in the Validation Step.
+Outputs do not just provide answers.  
+They explain whether they obeyed the rules. This is called **Obeying the Behavioral Contract** in Context Anchoring.
+
+Anchors and Gates define the Behavioral Contract.  
+Testing ensures the model is honoring it.  
+Validation checks whether it still holds.
 
 Self-audit includes:
 
@@ -249,48 +248,42 @@ Self-audit includes:
 - Constraint violations  
 - Confidence summaries  
 
-The output tells you whether to trust it. 
+The output tells you whether to trust it.
 
 ---
 
 ## Validation — Assertions
 
-Assertions show up as:
+Assertions appear as:
 
 - Orphan detection  
 - Schema enforcement  
 - Reference checks  
 - Confidence thresholds  
 
-That’s runtime safety, written in words.
+That is runtime safety, written in words.
 
-A useful troubleshooting move during the Validation step is to ask the LLM *why* it reached a specific conclusion. Then:
+A practical troubleshooting method during Validation is:
 
-1. Make a small correction  
-2. Ask it to reread the relevant Anchors and Gates  
-3. Ask the same question again  
-4. Repeat until the answer is stable and close to what you expect  
+1. Ask why the model reached a conclusion  
+2. Apply a small correction  
+3. Ask it to reread the relevant Anchors and Gates  
+4. Ask the same question again  
+5. Repeat until the answer stabilizes  
 
-When you run this prompt in an automation later, you can reuse that same idea:
+In automation, the same idea applies:
 
-- Loop through your Anchors and Gates  
-- Ask a sample question that you already know the answer to  
-- If the bot gives the same answer consistently, the “state” is behaving as expected  
+- Loop through Anchors and Gates  
+- Ask known test questions  
+- If the answer is stable, the “state” is working  
 
-You can do this loop for every new set of Anchors and Gates you add.
-
-Just remember:
-
-> Increasing the number of Anchors and Gates also increases the runtime required for the prompt.
-
-More structure means more reliability—but it also means more work for the runtime to carry.
+More structure increases reliability—but also increases runtime cost.
 
 ---
 
 ## Mini Example
 
-**Raw input:**
-
+**Raw input:**  
 “Summarize this doc and cite sources. Don’t mention draft sections.”
 
 **Anchors:**
@@ -306,45 +299,45 @@ More structure means more reliability—but it also means more work for the runt
 - Format CA prompt  
 - Validate output  
 
-**Output self-audit:**
+**Self-audit:**
 
 - Citations present: Pass  
 - Draft excluded: Pass  
 - Anchors complete: Pass  
 
-That’s CSRCQTOV in motion.
+That is CSRCQTOV in motion.
 
 ---
 
 ## Known Limits
 
-- Attention window = hard ceiling  
+- Attention window is a hard ceiling  
 - Long chains can drift  
 - Non-determinism is real  
 - Anchors reduce chaos, not eliminate it  
 - Humans still matter in high-stakes systems  
 
-Context Anchoring doesn’t remove uncertainty.  
+Context Anchoring does not remove uncertainty.  
 It makes uncertainty visible and manageable.
 
 ---
 
 ## What This Actually Means
 
-I didn’t set out to build a prompt programming model.  
-I just got tired of unreliable systems.
+This did not start as a plan to build a “prompt programming model.”  
+It started as frustration with unreliable systems.
 
 CSRCQTOV is what appears when you:
 
 - Stop chatting  
 - Start engineering  
-- And treat language like a runtime  
+- Treat language like a runtime  
 
-So the real thesis is simple:
+The thesis is simple:
 
-> When reasoning gets complex enough, it organizes itself like software—no matter what medium you use.
+> When reasoning becomes complex, it naturally organizes into structured systems—no matter the medium.
 
 Silicon, text, or smoke signals—  
-structure always wins.
+structure is what makes complexity survive.
 
 **Language just happens to be the newest machine.**
