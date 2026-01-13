@@ -63,6 +63,8 @@ Please see it at https://github.com/FloridaITOnline/ContextAnchoring/blob/main/C
 
 The Prompt-to-ContextAnchor Orchestrator converts an unstructured prompt into a structured Context Anchored system. It consists of:
 
+** Note : Context Anchoring may be Shortened to CA in some cases in this section.
+
 Anchors (A0 through A12)
 
 Gates (G1 through G10)
@@ -81,24 +83,24 @@ It serves as a complete example of CSRCQTOV in practice.
 
 The orchestrator defines the following Gates:
 
-- `G1_Parse_Input_Prompt`  
-- `G2_Evaluate_Anchor_Candidates`  
-- `G3_Evaluate_Gate_Candidates`  
-- `G4_Infer_Gates`  
-- `G5_Infer_Loops`  
-- `G6_Infer_Orchestration`  
-- `G7_Format_CA_Prompt`  
-- `G8_Assess_Conversion_Confidence`  
-- `G9_Validate_CA_Prompt`  
-- `G10_Request_Clarification`  
+-- `G1_Parse_Input_Prompt`  
+-- `G2_Evaluate_Anchor_Candidates`  
+-- `G3_Evaluate_Gate_Candidates`  
+-- `G4_Infer_Gates`  
+-- `G5_Infer_Loops`  
+-- `G6_Infer_Orchestration`  
+-- `G7_Format_CA_Prompt`  
+-- `G8_Assess_Conversion_Confidence`  
+-- `G9_Validate_CA_Prompt`  
+-- `G10_Request_Clarification`  
 
 Each Gate specifies:
 
-- Purpose  
-- Inputs  
-- Outputs  
-- Operation  
-- Verification  
+-- Purpose  
+-- Inputs  
+-- Outputs  
+-- Operation  
+-- Verification  
 
 These are executable reasoning units—functions written in language.
 
@@ -106,21 +108,21 @@ These are executable reasoning units—functions written in language.
 
 Anchors `A0` through `A12` store:
 
-- Task objective  
-- Input prompt  
-- Candidate anchors and gates  
-- Confirmed anchors and gates  
-- Loops  
-- Issues  
-- Confidence metrics  
-- Final output  
+-- Task objective  
+-- Input prompt  
+-- Candidate anchors and gates  
+-- Confirmed anchors and gates  
+-- Loops  
+-- Issues  
+-- Confidence metrics  
+-- Final output  
 
 Anchors are:
 
-- Named  
-- Typed (Static / Dynamic)  
-- Structured by schema  
-- Persisted through iteration  
+-- Named  
+-- Typed (Static / Dynamic)  
+-- Structured by schema  
+-- Persisted through iteration  
 
 They function as variables holding semantic state.
 
@@ -128,11 +130,11 @@ They function as variables holding semantic state.
 
 All reasoning occurs inside the model’s attention window:
 
-- Anchors  
-- Gates  
-- Flow  
-- Issues  
-- Audits  
+-- Anchors  
+-- Gates  
+-- Flow  
+-- Issues  
+-- Audits  
 
 This window is the execution environment.  
 Re-feeding structured output simulates persistent memory across runs.
@@ -142,12 +144,12 @@ Re-feeding structured output simulates persistent memory across runs.
 Compiler-like behavior appears as:
 
 **Front-end:**  
-- `G1_Parse_Input_Prompt`  
-  - Infers intent, constraints, and entities  
+  -- `G1_Parse_Input_Prompt`  
+  -- Infers intent, constraints, and entities  
 
 **Back-end:**  
-- `G9_Validate_CA_Prompt`  
-  - Checks syntax, schema, and structure  
+  -- `G9_Validate_CA_Prompt`  
+  -- Checks syntax, schema, and structure  
 
 Syntax consists of labels, headers, and schemas.  
 Semantics consists of inferred goals and constraints.
@@ -172,19 +174,19 @@ In the orchestrator this appears in:
 
 Testing uses:
 
-- Canonical reasoning paths
+-- Canonical reasoning paths
 
-- Boundary cases (Learn more https://github.com/FloridaITOnline/ContextAnchoring/blob/main/Definitions/Theory/Boundary%20Theory%20in%20Context%20Anchoring.md)
+-- Boundary cases (Learn more https://github.com/FloridaITOnline/ContextAnchoring/blob/main/Definitions/Theory/Boundary%20Theory%20in%20Context%20Anchoring.md)
 
-- Negative cases
+-- Negative cases
 
-- Iteration is implemented through:
+-- Iteration is implemented through:
 
-- LOOP: L1_Refinement_Loop
+-- LOOP: L1_Refinement_Loop
 
-- Re-execution of Gates on failure
+-- Re-execution of Gates on failure
 
-- Termination conditions
+-- Termination conditions
 
 Testing finds faults <> Iteration repairs them.
 
@@ -192,11 +194,11 @@ Testing finds faults <> Iteration repairs them.
 
 Final output includes:
 
-CA-Approved Prompt
+  -- CA-Approved Prompt
 
-Confidence Report
+  -- Confidence Report
 
-Outstanding Issues
+  -- Outstanding Issues
 
 Verification appears inside each Gate and in final audit sections.
 The output explains whether it is trustworthy.
@@ -205,13 +207,13 @@ The output explains whether it is trustworthy.
 
 Validation enforces:
 
-Schema compliance
+  -- Schema compliance
 
-Reference correctness
+  -- Reference correctness
 
-Anchor/Gate consistency
+  -- Anchor/Gate consistency
 
-Confidence thresholds
+  -- Confidence thresholds
 
 These act as runtime assertions written in language.
 
