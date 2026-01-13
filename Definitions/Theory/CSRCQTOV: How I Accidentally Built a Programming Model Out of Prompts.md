@@ -21,13 +21,21 @@ Once you try to build anything repeatable—analysis, pipelines, orchestrators, 
 
 That’s not engineering. That’s vibes.
 
-At the end of the day, where is the consistency?  
+At the end of the day, where is the consistency?
 Ever use the same prompt and get a different answer?
 
-There’s math behind that.  
-The bot is the same bot every time, but it can choose a different path to “true” based on many factors. That shows up when you ask the same question twice and get slightly different answers.
+There’s math behind that.
+The bot is the same bot every time, but it can take a different path to “true” based on many factors. That’s why asking the same question twice can give slightly different answers. It’s sampling from probability distributions influenced by:
 
-This gets dangerous when you’re trying to predict the *right* answer—like in agentic AI. Small differences in reasoning paths can cause big inconsistencies.
+Randomness (temperature, sampling)
+
+Context differences
+
+Hidden state interactions
+
+Token-level probabilities
+
+This gets dangerous when you’re trying to predict the right answer—like in agentic AI. Small differences in reasoning paths can cause big inconsistencies.
 
 Context Anchoring tries to fix that by adding explicit structure—named variables, rules, and flow—so the model has a configurable “state” instead of just vibes.
 
