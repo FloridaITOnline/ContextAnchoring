@@ -1,4 +1,4 @@
-CSRCQTOV: A Computing Model for Context Anchoring
+### CSRCQTOV: A Computing Model for Context Anchoring
 
 Justin Rodriguez  2026
 Context Anchoring Framework Definition
@@ -6,53 +6,59 @@ Context Anchoring Framework Definition
 *Version 1.3 — GPL v3 Open Framework*  
 [![License: GPL v3](https://img.shields.io/badge/license-GPLv3-blue.svg)](./LICENSE)
 
-Abstract
+### Abstract
 
-Context Anchoring (CA) treats prompting as structured computation rather than conversational interaction. Over time, CA systems exhibit a stable architectural pattern that mirrors classical software design. This pattern is formalized as CSRCQTOV, a mnemonic that maps traditional software layers to their Context Anchoring equivalents:
+**Context Anchoring (CA)** treats prompting as structured computation rather than conversational interaction. Over time, CA systems exhibit a stable architectural pattern that mirrors classical software design. This pattern is formalized as **CSRCQTOV**, a mnemonic that maps traditional software layers to their Context Anchoring equivalents:
 
-Code, State, Runtime, Compiler, QA, Testing, Output, Validation
+- Code, State, Runtime, Compiler, QA, Testing, Output, Validation
 
 This paper defines CSRCQTOV as a computing model and demonstrates its application using the Prompt-to-ContextAnchor Orchestrator as a concrete implementation.
 
-1. Definition of CSRCQTOV
+---
+
+### 1. Definition of CSRCQTOV
 
 CSRCQTOV is an architectural model describing how computation is expressed and controlled inside language-based systems.
 
-LayerDefinition in CA
-CodeReasoning is expressed as modular Gates and reasoning chains.
-StateSemantic memory is maintained through named Anchors.
-RuntimeComputation occurs inside the models attention window.
-CompilerNatural language is parsed into structured reasoning primitives.
-QAReasoning paths are checked for expected structure and coverage.
-TestingGates are re-executed across known reasoning paths.
-OutputResults include embedded self-audit information.
-ValidationAssertions enforce schema, reference, and constraint integrity.
+**LayerDefinition in CA**
+- CodeReasoning is expressed as modular Gates and reasoning chains.
+- StateSemantic memory is maintained through named Anchors.
+- RuntimeComputation occurs inside the models attention window.
+- CompilerNatural language is parsed into structured reasoning primitives.
+- QAReasoning paths are checked for expected structure and coverage.
+- TestingGates are re-executed across known reasoning paths.
+- OutputResults include embedded self-audit information.
+- ValidationAssertions enforce schema, reference, and constraint integrity.
 
 This model does not depend on silicon execution. It describes computation as reproducible reasoning under constraints.
 
-2. CSRCQTOV as a Computing Model
+--- 
 
-A system satisfies CSRCQTOV if it:
+### 2. CSRCQTOV as a Computing Model
 
-Has modular executable logic (Code)
+A system satisfies **CSRCQTOV** if it:
 
-Maintains named semantic state (State)
+1. Has modular executable logic **(Code)**
 
-Executes within a bounded reasoning space (Runtime)
+2. Maintains named semantic state **(State)**
 
-Parses language into structured operations (Compiler)
+3. Executes within a bounded reasoning space **(Runtime)**
 
-Audits reasoning shape (QA)
+4. Parses language into structured operations **(Compiler)**
 
-Re-runs logic for correction (Testing)
+5. Audits reasoning shape **(QA)**
 
-Emits auditable results (Output)
+6. Re-runs logic for correction **(Testing)**
 
-Enforces correctness rules (Validation)
+7. Emits auditable results **(Output)**
+
+8. Enforces correctness rules **(Validation)**
 
 Context Anchoring is an implementation of this model in natural language.
 
-3. The Prompt-to-ContextAnchor Orchestrator
+---
+
+### 3. The Prompt-to-ContextAnchor Orchestrator
 
 The Prompt-to-ContextAnchor Orchestrator converts an unstructured prompt into a structured Context Anchored system. It consists of:
 
@@ -66,8 +72,10 @@ Audits and confidence tracking
 
 It serves as a complete example of CSRCQTOV in practice.
 
-4. CSRCQTOV Applied to the Orchestrator
-4.1 Code  Gates as Functions
+---
+
+### 4. CSRCQTOV Applied to the Orchestrator
+**4.1 Code  Gates as Functions**
 
 The orchestrator defines Gates:
 
@@ -105,7 +113,7 @@ Verification
 
 These are executable reasoning unitsfunctions written in language.
 
-4.2 State  Anchors as Semantic Memory
+**4.2 State  Anchors as Semantic Memory**
 
 Anchors A0A12 store:
 
@@ -137,7 +145,7 @@ Persisted through iteration
 
 They function as variables holding semantic state.
 
-4.3 Runtime  Attention Window
+**4.3 Runtime  Attention Window**
 
 All reasoning occurs inside the models attention window:
 
@@ -153,7 +161,7 @@ Audits
 
 This window is the execution environment. Re-feeding structured output simulates persistent memory across runs.
 
-4.4 Compiler  Prompt Parsing
+**4.4 Compiler  Prompt Parsing**
 
 Compiler-like behavior appears as:
 
@@ -168,7 +176,7 @@ Checks syntax, schema, structure
 Syntax consists of labels, headers, schemas.
 Semantics consists of inferred goals and constraints.
 
-4.5 QA  Reasoning Shape Audit
+**4.5 QA  Reasoning Shape Audit**
 
 QA evaluates whether:
 
@@ -187,7 +195,7 @@ A11_Conversion_Issues
 
 Confidence scoring
 
-4.6 Testing  Iterative Execution
+**4.6 Testing  Iterative Execution**
 
 Testing uses:
 
@@ -208,7 +216,7 @@ Termination conditions
 Testing finds faults.
 Iteration repairs them.
 
-4.7 Output  Self-Auditing Results
+**4.7 Output  Self-Auditing Results**
 
 Final output includes:
 
@@ -221,7 +229,7 @@ Outstanding Issues
 Verification appears inside each Gate and in final audit sections.
 The output explains whether it is trustworthy.
 
-4.8 Validation  Assertions
+**4.8 Validation  Assertions**
 
 Validation enforces:
 
@@ -235,7 +243,9 @@ Confidence thresholds
 
 These act as runtime assertions written in language.
 
-5. Why CSRCQTOV Matters
+---
+
+### 5. Why CSRCQTOV Matters
 
 CSRCQTOV shows that:
 
@@ -249,7 +259,9 @@ Validation can be embedded in text
 
 The Prompt-to-ContextAnchor Orchestrator is not an analogyit is a working instance of this model.
 
-6. Limits
+---
+
+### 6. Limits
 
 Execution is bounded by attention window size
 
@@ -261,7 +273,9 @@ Human oversight is still required
 
 CSRCQTOV does not remove uncertainty. It makes it inspectable.
 
-7. Conclusion
+---
+
+### 7. Conclusion
 
 CSRCQTOV defines a computing model for language-based systems. Context Anchoring is its primary implementation. The Prompt-to-ContextAnchor Orchestrator demonstrates that:
 
@@ -276,3 +290,6 @@ Audits act as assertions
 When reasoning becomes complex, it organizes itself like softwareno matter the medium.
 
 Language is simply the newest runtime.
+
+--- 
+**Written by:** Justin Rodriguez
