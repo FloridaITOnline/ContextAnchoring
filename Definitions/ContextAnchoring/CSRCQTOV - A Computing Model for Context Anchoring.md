@@ -14,6 +14,16 @@ Context Anchoring Framework Definition
 
 This paper defines CSRCQTOV as a computing model and demonstrates its application using the Prompt-to-ContextAnchor Orchestrator as a concrete implementation.
 
+| **Layer** | **Traditional Software** | **Context Anchoring Equivalent** | **Explanation** |
+|------------|---------------------------|----------------------------------|-----------------|
+| **Code** | Functions, APIs | **Gates & Reasoning Chains** | Each Gate acts as a callable function executing logic through controlled reasoning rather than compiled instructions. |
+| **State** | Variables | **Anchored Context** | Stable reference points (anchors) preserve semantic state between iterations, simulating variable memory in natural language. |
+| **Runtime** | CPU / Memory | **Model Attention Window** | Computation occurs within the model’s attention window where prompts, anchors, and reasoning coexist as transient state. |
+| **Compiler** | Syntax Parser | **Prompt Parser** | The model interprets linguistic syntax and semantics, effectively parsing natural language into reasoning operations. |
+| **QA / Testing** | Unit Tests | **Gate Tests & Equivalence Classes** | Controlled tests validate reasoning pathways using canonical, boundary, and negative cases to confirm stability. |
+| **Output Validation** | Assertions | **Self-Audit Section** | Embedded audit prompts act as runtime assertions verifying schema, logic, and compliance within the model’s output. |
+
+
 ---
 
 ### 1. Definition of CSRCQTOV
