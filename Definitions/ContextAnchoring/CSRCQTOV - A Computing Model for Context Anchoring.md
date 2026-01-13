@@ -156,17 +156,17 @@ Semantics consists of inferred goals and constraints.
 
 QA evaluates whether:
 
-- Required Gates were executed  
-- Expected reasoning steps appear  
-- Coverage is sufficient  
+-- Required Gates were executed  
+-- Expected reasoning steps appear  
+-- Coverage is sufficient  
 
 QA audits the reasoning process, not the result.
 
 In the orchestrator this appears in:
 
-- Gate verification sections  
-- `A11_Conversion_Issues`  
-- Confidence scoring  
+-- Gate verification sections  
+-- `A11_Conversion_Issues`  
+-- Confidence scoring  
 
 - ### 4.6 Testing  Iterative Execution
 
