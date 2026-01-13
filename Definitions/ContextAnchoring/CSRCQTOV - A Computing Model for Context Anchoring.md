@@ -77,7 +77,7 @@ It serves as a complete example of CSRCQTOV in practice.
 
 ## 4. CSRCQTOV Applied to the Orchestrator
 
-### 4.1 Code — Gates as Functions
+- ### 4.1 Code — Gates as Functions
 
 The orchestrator defines the following Gates:
 
@@ -102,9 +102,7 @@ Each Gate specifies:
 
 These are executable reasoning units—functions written in language.
 
----
-
-### 4.2 State — Anchors as Semantic Memory
+- ### 4.2 State — Anchors as Semantic Memory
 
 Anchors `A0` through `A12` store:
 
@@ -126,9 +124,7 @@ Anchors are:
 
 They function as variables holding semantic state.
 
----
-
-### 4.3 Runtime — Attention Window
+- ### 4.3 Runtime — Attention Window
 
 All reasoning occurs inside the model’s attention window:
 
@@ -141,9 +137,7 @@ All reasoning occurs inside the model’s attention window:
 This window is the execution environment.  
 Re-feeding structured output simulates persistent memory across runs.
 
----
-
-### 4.4 Compiler — Prompt Parsing
+- ### 4.4 Compiler — Prompt Parsing
 
 Compiler-like behavior appears as:
 
@@ -158,9 +152,7 @@ Compiler-like behavior appears as:
 Syntax consists of labels, headers, and schemas.  
 Semantics consists of inferred goals and constraints.
 
----
-
-### 4.5 QA — Reasoning Shape Audit
+- ### 4.5 QA — Reasoning Shape Audit
 
 QA evaluates whether:
 
@@ -176,9 +168,7 @@ In the orchestrator this appears in:
 - `A11_Conversion_Issues`  
 - Confidence scoring  
 
----
-
-**4.6 Testing  Iterative Execution**
+- ### 4.6 Testing  Iterative Execution
 
 Testing uses:
 
@@ -198,7 +188,7 @@ Testing uses:
 
 Testing finds faults <> Iteration repairs them.
 
-**4.7 Output  Self-Auditing Results**
+- ### 4.7 Output  Self-Auditing Results
 
 Final output includes:
 
@@ -211,7 +201,7 @@ Outstanding Issues
 Verification appears inside each Gate and in final audit sections.
 The output explains whether it is trustworthy.
 
-**4.8 Validation  Assertions**
+- ### 4.8 Validation  Assertions
 
 Validation enforces:
 
