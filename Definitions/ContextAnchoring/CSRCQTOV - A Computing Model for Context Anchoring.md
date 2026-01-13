@@ -63,7 +63,7 @@ Please see it at https://github.com/FloridaITOnline/ContextAnchoring/blob/main/C
 
 The Prompt-to-ContextAnchor Orchestrator converts an unstructured prompt into a structured Context Anchored system. It consists of:
 
-** Note : Context Anchoring may be Shortened to CA in some cases in this section.
+  **Reminder : Context Anchoring may be Shortened to CA in some cases.**
 
 Anchors (A0 through A12)
 
