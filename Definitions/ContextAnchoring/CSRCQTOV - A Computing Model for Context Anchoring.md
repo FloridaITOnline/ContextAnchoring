@@ -59,6 +59,7 @@ Context Anchoring is an implementation of this model in natural language.
 ---
 
 ### 3. The Prompt-to-ContextAnchor Orchestrator
+Please see it at https://github.com/FloridaITOnline/ContextAnchoring/blob/main/ContextAnchorPromptOrchestrator/CAPromptOrchestrator.md
 
 The Prompt-to-ContextAnchor Orchestrator converts an unstructured prompt into a structured Context Anchored system. It consists of:
 
@@ -75,31 +76,33 @@ It serves as a complete example of CSRCQTOV in practice.
 ---
 
 ### 4. CSRCQTOV Applied to the Orchestrator
+
 **4.1 Code  Gates as Functions**
 
 The orchestrator defines Gates:
 
-G1_Parse_Input_Prompt
+- G1_Parse_Input_Prompt
 
-G2_Evaluate_Anchor_Candidates
+- G2_Evaluate_Anchor_Candidates
 
-G3_Evaluate_Gate_Candidates
+- G3_Evaluate_Gate_Candidates
 
-G4_Infer_Gates
+- G4_Infer_Gates
 
-G5_Infer_Loops
+- G5_Infer_Loops
 
-G6_Infer_Orchestration
+- G6_Infer_Orchestration
 
-G7_Format_CA_Prompt
+- G7_Format_CA_Prompt
 
-G8_Assess_Conversion_Confidence
+- G8_Assess_Conversion_Confidence
 
-G9_Validate_CA_Prompt
+- G9_Validate_CA_Prompt
 
-G10_Request_Clarification
+- G10_Request_Clarification
 
-Each Gate specifies:
+
+**Each Gate specifies:**
 
 Purpose
 
@@ -199,22 +202,21 @@ Confidence scoring
 
 Testing uses:
 
-Canonical reasoning paths
+- Canonical reasoning paths
 
-Boundary cases
+- Boundary cases (Learn more https://github.com/FloridaITOnline/ContextAnchoring/blob/main/Definitions/Theory/Boundary%20Theory%20in%20Context%20Anchoring.md)
 
-Negative cases
+- Negative cases
 
-Iteration is implemented through:
+- Iteration is implemented through:
 
-LOOP: L1_Refinement_Loop
+- LOOP: L1_Refinement_Loop
 
-Re-execution of Gates on failure
+- Re-execution of Gates on failure
 
-Termination conditions
+- Termination conditions
 
-Testing finds faults.
-Iteration repairs them.
+Testing finds faults <> Iteration repairs them.
 
 **4.7 Output  Self-Auditing Results**
 
