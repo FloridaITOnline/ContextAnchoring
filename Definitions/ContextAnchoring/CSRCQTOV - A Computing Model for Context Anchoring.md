@@ -56,13 +56,9 @@ A system satisfies **CSRCQTOV** if it:
 
 4. Parses language into structured operations **(Compiler)**
 
-5. Audits reasoning shape **(QA)**
+5. Audits reasoning shape **(QA)** / Re-runs logic for correction **(Testing)** <>Emits auditable results **(Output)**
 
-6. Re-runs logic for correction **(Testing)**
-
-7. Emits auditable results **(Output)**
-
-8. Enforces correctness rules **(Validation)**
+6. Enforces correctness rules **(Validation)**
 
 Context Anchoring is an implementation of this model in natural language.
 
