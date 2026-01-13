@@ -240,7 +240,7 @@ Iteration fixes them.
 ## Output — Self-Audit
 
 My outputs don’t just give answers.  
-They explain whether they obeyed the rules.
+They explain whether they obeyed the rules. This is known as '**Obeying the Behavioral Contract**' in Context Anchoring. We set a Behavioral Contract with the Anchors and Gates with the LLM. The Testing Primitive ensures the LLM is adhering to the Behavioral Contract it agreed to. This Output is what we use to test in the Validation Step.
 
 Self-audit includes:
 
@@ -249,7 +249,7 @@ Self-audit includes:
 - Constraint violations  
 - Confidence summaries  
 
-The output tells you whether to trust it.
+The output tells you whether to trust it. 
 
 ---
 
@@ -264,9 +264,30 @@ Assertions show up as:
 
 That’s runtime safety, written in words.
 
+A useful troubleshooting move during the Validation step is to ask the LLM *why* it reached a specific conclusion. Then:
+
+1. Make a small correction  
+2. Ask it to reread the relevant Anchors and Gates  
+3. Ask the same question again  
+4. Repeat until the answer is stable and close to what you expect  
+
+When you run this prompt in an automation later, you can reuse that same idea:
+
+- Loop through your Anchors and Gates  
+- Ask a sample question that you already know the answer to  
+- If the bot gives the same answer consistently, the “state” is behaving as expected  
+
+You can do this loop for every new set of Anchors and Gates you add.
+
+Just remember:
+
+> Increasing the number of Anchors and Gates also increases the runtime required for the prompt.
+
+More structure means more reliability—but it also means more work for the runtime to carry.
+
 ---
 
-## Mini Example (No Hand-Waving)
+## Mini Example
 
 **Raw input:**
 
@@ -295,12 +316,10 @@ That’s CSRCQTOV in motion.
 
 ---
 
-## Known Limits (Because This Isn’t Magic)
-
-Let’s be honest:
+## Known Limits
 
 - Attention window = hard ceiling  
-- Long chains drift  
+- Long chains can drift  
 - Non-determinism is real  
 - Anchors reduce chaos, not eliminate it  
 - Humans still matter in high-stakes systems  
