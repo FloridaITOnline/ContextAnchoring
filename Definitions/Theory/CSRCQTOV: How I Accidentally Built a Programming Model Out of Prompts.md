@@ -1,4 +1,4 @@
-# CSRCQTOV: How I Accidentally Built a Programming Model Out of Prompts
+# CSRCQTOV: A Programming Model Out of Prompts
 
 **Justin Rodriguez — 2026**  
 *Context Anchoring Research Notes*  
