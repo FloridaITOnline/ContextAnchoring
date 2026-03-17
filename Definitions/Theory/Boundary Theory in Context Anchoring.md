@@ -68,7 +68,7 @@ The CSE represents the portion of the model's attention window used while mainta
 |---|---|
 | 50-70% | Stable reasoning and anchor retention |
 | 70-85% | Increasing drift risk |
-| 85%+ | High probability of anchor degradation and audit failure |
+| 85%+ | Elevated risk of degradation (model-dependent)|
 
 As context approaches the upper boundary:
 
