@@ -1,154 +1,169 @@
-# 🧩 Boundary Theory in Context Anchoring
-2026 Justin Rodriguez
-Licensed under GPL v3
-*Version 2.0 — GPL v3 Open Framework*  
-[![License: GPL v3](https://img.shields.io/badge/license-GPLv3-blue.svg)](./LICENSE)
+# Boundary Theory in Context Anchoring
 
-> “A system’s reliability is defined not by how it performs under ideal conditions, but by how it behaves at the edge of its boundaries.”  
-> — *Rodriguez, J. (2025). Boundary Theory in Context Anchoring.*
+**Justin Rodriguez**  
+**2026**  
+**Version 2.1**  
+**GPL v3 Open Framework**
 
----
+## License
 
-## 🧭 Overview
+This work is licensed under the GNU General Public License v3.0 (`GPL-3.0`).
 
-In traditional software engineering, **Boundary Testing** ensures that systems behave predictably at their *input limits* — testing the edges of valid ranges to catch off-by-one errors or overflow conditions.
+You are free to:
 
-In **Context Anchoring**, boundaries are not numeric but **semantic**.  
-They define the **limits of stable reasoning**, **anchored state retention**, and **contextual determinism** within the model’s attention window.
+- Use
+- Share
+- Modify
+- Distribute
 
-Understanding and respecting these boundaries is essential to writing stable, reproducible **Gate Tests** and **Audit Loops**.
+Under the condition that all derivative works:
 
----
+- Remain open source
+- Retain attribution to the original author
+- Preserve the same GPL v3 license
 
-## ⚙️ Types of Boundaries in Context Anchoring
+Full license text: <https://www.gnu.org/licenses/gpl-3.0.en.html>
 
-| **Boundary Type** | **Definition** | **Testing Goal** | **Failure Mode** |
-|--------------------|----------------|------------------|------------------|
-| **Contextual Boundary** | The maximum stable token or character limit (≈ 10 KB / 3,500-4,000 tokens). | Verify reasoning remains consistent up to the context limit. | Loss of state, hallucination, or anchor drift. |
-| **Semantic Boundary** | The edge between valid and invalid conceptual domains. | Test for reasoning integrity under ambiguous or contradictory input. | Confabulation or false generalization. |
-| **Instructional Boundary** | The limit of interpretability in the Intent/Constraint pair. | Ensure the model correctly distinguishes primary vs. secondary intent. | Over-generalization or instruction bleed. |
-| **Validation Boundary** | The threshold where self-audits fail to detect inconsistencies. | Confirm audit prompts catch drift and malformed outputs. | Silent logical failure or schema corruption. |
+## Overview
 
-Each boundary acts like a **stress line** in linguistic computation.  
-Testing them ensures that Context Anchoring systems maintain structural integrity even as complexity increases.
+> "A system's reliability is defined not by how it performs under ideal conditions, but by how it behaves at the edge of its boundaries."  
+> Rodriguez, J. (2025)
 
----
+In traditional software engineering, boundary testing ensures that systems behave predictably at their input limits, catching off-by-one errors, overflow conditions, and edge-case failures.
 
-## 🧮 Boundary Theory and Gate Testing
+In Context Anchoring, boundaries are not numeric. They are semantic and contextual.
 
-In the *Context Anchoring Computing Model*, each **Gate** represents a reasoning function and each **Audit** acts as a self-test.  
-To validate them, we apply **Boundary Theory** the same way developers apply unit and integration testing:
+They define the limits of:
 
-| **Testing Layer** | **Analog in Context Anchoring** | **Purpose** |
-|--------------------|---------------------------------|--------------|
-| **Unit Test** | Audit inside a Gate | Validate individual reasoning step integrity. |
-| **Integration Test** | Multi-Gate anchor continuity | Ensure context survives across state transfers. |
-| **Boundary Test** | Input, length, and semantic edge cases | Confirm stability near reasoning limits. |
+- Stable reasoning
+- Anchored state retention
+- Deterministic behavior within a model's attention window
 
-For every Gate, boundary tests should include:
-1. **Canonical Case** — Expected input and outcome.  
-2. **Boundary Case** — Near the semantic or contextual edge.  
-3. **Negative Case** — Invalid or contradictory data.  
-4. **Reinforcement Case** — Re-run to confirm deterministic output.
+Understanding and testing these boundaries is essential to building repeatable, auditable, prompt-native systems.
 
-This structure mirrors equivalence class testing in traditional QA — but applies it to reasoning.
+## Types of Boundaries in Context Anchoring
 
-In Context Anchoring, testing is not applied to code — it is applied to reasoning itself.
+| Boundary Type | Definition | Testing Goal | Failure Mode |
+|---|---|---|---|
+| Contextual Boundary | Limits of stable reasoning within the attention window | Verify reasoning consistency under increasing context load | Anchor drift, hallucination, state loss |
+| Semantic Boundary | Edge between valid and invalid conceptual domains | Test reasoning under ambiguity or contradiction | Confabulation, false generalization |
+| Instructional Boundary | Limit of interpretability of intent and constraints | Ensure correct prioritization of instructions | Instruction bleed, over-generalization |
+| Validation Boundary | Threshold where audits fail to detect inconsistencies | Confirm detection of malformed outputs | Silent logical failure, schema corruption |
 
----
+Each boundary acts as a stress line in linguistic computation.
 
-## 🧠 The 10 KB Stability Boundary
+Testing them ensures that Context Anchoring systems maintain structural integrity as complexity increases.
 
-Context Anchoring uses a **bounded runtime** of approximatation of 10,240 characters (≈ 3,500-4,000 tokens).  
-This isn’t arbitrary — it’s a **stability envelope**, ensuring that the prompt has reliablility between model token availability variations. 
-Beyond this limit:
-- Anchors may degrade (loss of context references)
-- Audits may lose fidelity
-- Reinforcement Loops may oscillate or diverge
-- It is important to understand your intended Model's Token Availability. Test and if Drift occurs, one thing you can try is to reduce the Bounded Runtime.
+## Context Stability Envelope (CSE)
 
-**Boundary Testing** ensures that every orchestration respects this runtime constraint.  
-If drift begins near 9,000–10,000 characters, the audit should detect and flag the instability — this is *expected behavior*, not failure.
+Context Anchoring does not rely on a fixed token limit. Instead, it operates within a **Context Stability Envelope (CSE)**:
 
----
+> Stability is governed by relative context utilization, not absolute size.
 
-## 🧩 Example: Boundary Test Pattern
+The CSE represents the portion of the model's attention window used while maintaining stable, deterministic reasoning.
 
-Test Name: ANCHOR_STABILITY_NEAR_LIMIT
-Goal: Verify that semantic anchors remain stable near 9 500–10 000 characters.
+## Empirical Stability Guidelines
 
-Steps:
-1. Run multi-gate orchestration with cumulative context size of 9,800–10,000 chars.
-2. Observe whether audit confirms state retention across last two gates.
-3. If audit drift occurs, confirm Recovery Loop reanchors correctly.
+| Context Utilization | Behavior |
+|---|---|
+| 50-70% | Stable reasoning and anchor retention |
+| 70-85% | Increasing drift risk |
+| 85%+ | High probability of anchor degradation and audit failure |
 
-Expected Result:
-✅ Stable anchor replication or self-correction message.
-⚠️ Drift detected but recovered through Reinforcement Loop.
-❌ Context collapse or logical reset (failure condition).
+As context approaches the upper boundary:
 
----
+- Anchors may lose referential integrity
+- Audits may degrade in accuracy
+- Reinforcement loops may oscillate or diverge
 
-## 📚 References & Related Work
+This is not a failure of the model. It is a boundary condition of the runtime.
 
-**Classical Software Testing Foundations**
+## Boundary Theory and Gate Testing
 
-1. Myers, G. J., Sandler, C., & Badgett, T. (2011). *The Art of Software Testing (3rd ed.).* Wiley.  
-   – The foundational text introducing **Boundary Value Analysis** and equivalence class partitioning — key inspirations for Gate and Audit testing.
+In the Context Anchoring computing model:
 
-2. Beizer, B. (1995). *Software Testing Techniques (2nd ed.).* Dreamtech Press.  
-   – Defines the concept of **stress and boundary testing** as the point where systems reveal their most meaningful failures.
+- Gates represent reasoning functions
+- Audits act as self-tests
+- Testing is not applied to code; it is applied to reasoning itself
 
-3. Kaner, C., Falk, J., & Nguyen, H. Q. (1999). *Testing Computer Software (2nd ed.).* Wiley.  
-   – Explains how edge-case testing provides insight into system behavior under non-ideal input — analogous to contextual drift testing in Anchoring.
+To validate reasoning behavior, Boundary Theory applies structured testing analogous to traditional software QA:
 
----
+| Testing Layer | Analog in Context Anchoring | Purpose |
+|---|---|---|
+| Unit Test | Audit inside a Gate | Validate individual reasoning step integrity |
+| Integration Test | Multi-Gate anchor continuity | Ensure context survives across state transitions |
+| Boundary Test | Input, length, and semantic edge cases | Confirm stability near reasoning limits |
 
-**Cognitive & Computational Boundary Studies**
+## Gate Test Structure
 
-4. Simon, H. A. (1972). *Theories of Bounded Rationality.* Decision and Organization.  
-   – Introduces the notion of cognitive limits in decision-making — a philosophical parallel to token-bounded reasoning in language models.
+For every Gate, boundary-aware testing should include:
 
-5. Miller, G. A. (1956). *The Magical Number Seven, Plus or Minus Two: Some Limits on Our Capacity for Processing Information.* Psychological Review.  
-   – Early work on working-memory constraints; provides theoretical grounding for attention-window limitations in Context Anchoring.
+- **Canonical Case**: Expected input and outcome
+- **Boundary Case**: Near semantic or contextual limits
+- **Negative Case**: Invalid or contradictory input
+- **Reinforcement Case**: Re-run to confirm output stability
+- **Adversarial Case**: Plausible but incorrect reasoning paths
 
-6. Tishby, N., Pereira, F. C., & Bialek, W. (1999). *The Information Bottleneck Method.*  
-   – Describes compression and entropy reduction under bounded information channels — conceptually aligned with entropy management in Anchoring’s Constraint atom.
+> A system is not reliable because it produces correct answers; it is reliable because it rejects incorrect reasoning.
 
----
+## Why This Matters
 
-**Modern LLM Context Stability & Drift Research**
+Traditional testing verifies whether code behaves correctly.
 
-7. Press, O., Smith, N. A., & Levy, O. (2021). *Train Short, Test Long: Attention with Linear Biases Enables Input Length Extrapolation.* ACL 2021.  
-   – Examines transformer degradation as input length increases — supporting the 10 KB stability boundary used in Anchoring.
+Context Anchoring testing verifies whether reasoning behaves consistently under constraint.
 
-8. Liu, H., et al. (2023). *Lost in the Middle: How Language Models Use Long Contexts.* *Transactions of the ACL (TACL)*.  
-   – Empirically demonstrates context loss near attention-window limits; validates semantic drift as a measurable boundary condition.
+This extends classical QA into semantic computation, where correctness depends not only on output, but on the path of reasoning used to produce it.
 
-9. Wei, J., et al. (2022). *Chain-of-Thought Prompting Elicits Reasoning in Large Language Models.* NeurIPS.  
-   – Introduces structured reasoning chains — the precursor to Gates — but without Anchoring’s state validation.
+## Example: Boundary Test Pattern
 
-10. Chen, M., et al. (2024). *Evaluating Robustness of Large Language Models to Prompt Perturbations.* *arXiv:2401.10000.*  
-   – Shows that controlled prompt constraints improve determinism — empirically reinforcing Anchoring’s **Constraint** and **Audit** atoms.
+**Test Name:** `ANCHOR_STABILITY_NEAR_LIMIT`  
+**Goal:** Verify semantic anchors remain stable near upper context limits
 
----
+### Steps
 
-**Applied Prompt Engineering & Runtime Design**
+1. Run multi-gate orchestration approaching high context utilization (`~80-90%` of window).
+2. Observe whether audit confirms anchor retention across final gates.
+3. If drift occurs, verify Recovery Loop reanchors correctly.
 
-11. Rodriguez, J. (2025). *Context Anchoring as a Computing Model.* Florida IT Online — Prompt-Labs Series.  
-   – Defines Context Anchoring as a linguistic computation framework; introduces Gates, Anchors, and Audits as analogues to code, state, and assertions.
+### Expected Results
 
-12. Rodriguez, J. (2025). *The Seven Atoms of Context Anchoring.* Florida IT Online — Context-Anchoring Core.  
-   – Describes the atomic structure underlying prompt-native computation; provides theoretical substrate for Boundary Theory.
+- Stable anchor replication
+- Drift detected and corrected via reinforcement loop
+- Context collapse or logical reset (failure condition)
 
----
+## References and Related Work
 
-## 🔎 Citation Note
-The classical sources (1–3) provide the testing theory framework.  
-Cognitive works (4–6) justify bounded reasoning and memory limits.  
-Modern transformer research (7–10) empirically validates context drift phenomena.  
-Anchoring papers (11–12) establish the applied framework integrating all three domains.
+### Classical Software Testing Foundations
 
----
-**Written by:** Justin Rodriguez
+- Myers, G. J., Sandler, C., & Badgett, T. (2011). *The Art of Software Testing* (3rd ed.). Wiley.
+- Beizer, B. (1995). *Software Testing Techniques* (2nd ed.). Dreamtech Press.
+- Kaner, C., Falk, J., & Nguyen, H. Q. (1999). *Testing Computer Software* (2nd ed.). Wiley.
 
+### Cognitive and Computational Boundary Studies
+
+- Simon, H. A. (1972). *Theories of Bounded Rationality*.
+- Miller, G. A. (1956). *The Magical Number Seven, Plus or Minus Two*.
+- Tishby, N., Pereira, F. C., & Bialek, W. (1999). *The Information Bottleneck Method*.
+
+### Modern LLM Context Stability and Drift Research
+
+- Press, O., Smith, N. A., & Levy, O. (2021). *Train Short, Test Long*. ACL 2021.
+- Liu, H., et al. (2023). *Lost in the Middle*. TACL.
+- Wei, J., et al. (2022). *Chain-of-Thought Prompting*. NeurIPS.
+- Chen, M., et al. (2024). *Evaluating Robustness of LLMs*. `arXiv:2401.10000`.
+
+### Applied Prompt Engineering and Runtime Design
+
+- Rodriguez, J. (2025). *Context Anchoring as a Computing Model*.
+- Rodriguez, J. (2025). *The Seven Atoms of Context Anchoring*.
+
+## Citation Note
+
+The classical sources provide testing theory foundations. Cognitive studies justify bounded reasoning limits. Modern LLM research validates context drift behavior. Context Anchoring integrates these domains into a unified prompt-native framework.
+
+## Author
+
+**Justin Rodriguez**  
+**Context Anchoring Framework**  
+**Florida IT Online LLC**  
+**GPL v3 Open Framework**
