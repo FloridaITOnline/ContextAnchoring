@@ -53,6 +53,8 @@ For every Gate, boundary tests should include:
 
 This structure mirrors equivalence class testing in traditional QA — but applies it to reasoning.
 
+In Context Anchoring, testing is not applied to code — it is applied to reasoning itself.
+
 ---
 
 ## 🧠 The 10 KB Stability Boundary
