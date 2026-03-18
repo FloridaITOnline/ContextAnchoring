@@ -45,7 +45,7 @@
   consistent, the outputs become predictable and therefore testable. By validating this state against representative
   test cases, we can build confidence in how the system will behave across similar real-world inputs.
 
-  This aligns with **Equivalence Partitioning**, which suggests that a representative test case can be used to infer
+  This aligns with **Equivalence Testing** (Also known as Equivalence Partitioning), which suggests that a representative test case can be used to infer
   behavior across inputs within the same equivalence class. In practice, this allows for efficient and robust validation
   using small, well-designed sample sets instead of exhaustive testing.
 
