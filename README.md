@@ -25,17 +25,33 @@
   ## What This Project Does
 
   This project demonstrates an automated pipeline that converts unstructured input into structured outputs such as JSON,
-  CSV, and human-readable reports using PowerShell and LLM orchestration.
+  CSV, and human-readable reports using PowerShell and LLM orchestration. It can also take structured data and produce
+  predictable outputs for complex tasks using behavioral contracts, roles, and sample testing. 
 
   It simulates a multi-stage processing system in which each step validates and transforms data, similar to how modern
   cloud pipelines operate.
 
   ## Why It Matters
 
-  Many real-world systems require turning messy input into reliable, structured artifacts.
+  Many real-world systems require transforming messy input into reliable, structured artifacts.
 
-  This project shows how that can be done using automation, validation, and controlled LLM usage without building custom
-  models.
+  This project demonstrates how that can be achieved through automation, validation, and controlled use of LLMs—without the 
+  need to train custom models. It is particularly effective for problems that are complex, but not valuable enough to justify 
+  building and maintaining a dedicated model.
+
+  The core idea is that prompts can be designed to place an LLM into a repeatable operational state. When that state is consistent, 
+  the outputs become predictable—and therefore testable. By validating this state against representative test cases, we can build 
+  confidence in how the system will behave across similar real-world inputs.
+
+  This aligns with Equivalence Testing Theory (also called Equivalence Partitioning), which suggests that a representative test case 
+  can be used to infer behavior across all inputs within the same equivalence class. In practice, this allows for efficient and robust 
+  validation using small, well-designed sample sets instead of exhaustive testing.
+
+  Equivalence Testing Theory, combined with Boundary Value Analysis, strengthens this approach by testing not only valid inputs, but 
+  also invalid and edge-case conditions. This helps verify not just that the model produces correct outputs, but that it fails in expected 
+  and explainable ways—indicating the system is operating within the desired state.
+
+  The result is a practical approach to evaluating LLM reliability using structured reasoning and plain-language logic.
 
   ## What the Blog Covers
 
