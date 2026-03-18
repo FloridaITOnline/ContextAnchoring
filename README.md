@@ -9,7 +9,7 @@
   💡 Why it matters
 
   Many real-world systems require turning messy input into reliable, structured artifacts.
-  This project shows how that can be done using automation, validation, and controlled LLM usagewithout building custom
+  This project shows how that can be done using automation, validation, and controlled LLM usage without building custom
   models.
 
 
