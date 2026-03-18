@@ -21,7 +21,7 @@
   In this model, a prompt becomes a small reasoning engine built from three primitives:
 
   ```text
-  ANCHOR(S) -> GATE(S) -> LOOP (optional) -> updated ANCHOR(S)
+  ANCHOR(S) -> GATE(S) -> LOOP (optional) -> updated ANCHOR(S)```
 
   Everything else, including auditing, constraints, intent, and compression, is layered on top of these primitives
   rather than treated as a primitive itself.
