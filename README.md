@@ -13,7 +13,7 @@
   models.
 
 
-• ## What This Project Does
+## What This Project Does
 
   This project demonstrates an automated pipeline that converts unstructured input into structured outputs such as JSON,
   CSV, and human-readable reports using PowerShell and LLM orchestration.
