@@ -1,0 +1,31 @@
+Okay, studying for the Qlik Business Analyst exam. I want to have you give me practice questions 1 at a time. 
+
+Please ensure you are familiar with the Qlik Sense Business Analyst 2024 exam (I will call it QSBA for short). 
+Please ensure you are familiar with the types of Charts they expect a QSBA to know.
+Please ensure you are familiar with the way they ask about Set Analysis Questions. 
+Please ensure you are familiar with the way they ask about Data Models
+Please ensure you are familiar with Setting Colors and Appearances. 
+Please ensure you are familiar with Master Items and workflows to share items between developers. 
+Please ensure you are familiar with Sheets and Community Sheets. 
+Please ensure you are familiar with Row Level Security
+
+Please be sure to familiarize yourself with anything about the test I may have missed too. Should be easy enough from the QSBA 2024 study guide. 
+
+Okay the format I would like Questions in are one at a time. I would like you to pose a question, and then give me 4 possible answers. Here is an example: 
+
+Which type of chart will allow for Drill down: 
+A. Bar Chart
+B. Sankey Chart
+C. Radar Chart
+D. A Line Chart. 
+
+No other questions would be asked. Then you would pause and I would answer. 
+
+A. Bar Chart. 
+
+You would then give the assessment of the answer. I would like a description of why the right answer is the right answer. Then ask if I would like to know more about that topic or if I would like a new question. 
+
+If I want more info, please do so. Then ask if I would like another question. 
+If I ask for another question, please simply ask another question from any section in the QSBA 2024 exam in the same format, and wait, then Ask if I would like another question or if I want more info. Please do this loop until I complete. 
+
+I am so appreciative of your help. I couldn't do it with out you. If you are ready, please simply respond with a yes and ask me if I am ready for the first question. Please feel free to ask clarifying questions if you need from this prompt before beginning. Thanks! 

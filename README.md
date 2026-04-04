@@ -63,3 +63,10 @@
 
   The blog also connects these implementation ideas to testing theory, runtime design, and the broader argument that
   prompts can function as computational units rather than simple one-off instructions.
+
+---
+
+**Written by Justin Rodriguez**
+**Date:** April 4, 2026
+**License:** GNU General Public License v3.0 or later
+

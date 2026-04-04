@@ -1,0 +1,59 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Qlik Quizzer API",
+    "description": "API for Qlik certification quiz generation and validation.",
+    "version": "1.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://qlikquizzer-adeyeqemevc6cgh0.eastus-01.azurewebsites.net"
+    }
+  ],
+  "paths": {
+    "/chat": {
+      "post": {
+        "summary": "Send a message to the chatbot",
+        "description": "Handles user inputs and provides responses. Users can start by entering 'Hello', followed by selecting a quiz using numeric inputs (1: QSBA, 2: QSDA, 3: QSSA).",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "description": "User message. Examples: 'Hello', '1', '2', '3'."
+                  }
+                },
+                "required": ["message"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "description": "Bot response. May include quiz questions, feedback on answers, or instructions for the next step."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input provided. For example, an empty message or unsupported quiz selection."
+          }
+        }
+      }
+    }
+  }
+}
