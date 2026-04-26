@@ -1,5 +1,7 @@
 # Adding Bitwarden BWS Vault to OpenClaw for Secrets Management
 
+Written by Justin Rodriguez; Licensed under the GNU General Public License v3.0.
+
 ## OpenClaw + Bitwarden Secrets Manager Setup
 
 ## Overview
