@@ -180,6 +180,11 @@ That gives you a quick way to confirm what secrets are visible and which ID you 
 bws secret get <SECRET_ID> | jq -r '.value'
 ```
 
+Another useful way to call them: 
+
+```bash
+bws secret list | jq -r '.[] | select(.key=="<Secret_ID>") | .value'
+```
 ---
 
 ## 10. Optional Test Secret
